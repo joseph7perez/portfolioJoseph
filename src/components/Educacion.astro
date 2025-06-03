@@ -1,0 +1,61 @@
+---
+import { date } from "astro:schema"
+
+const educacion = [
+    
+    {
+        universidad: 'Politécnico Grancolombiano',
+        date: '2021 - 2025',
+        titulo: 'Ingeniería de Sistemas',
+        // descripcion: 'Modelado, construcción y realización de pruebas funcionales de nueva función en procesos de medición de experiencia en sitios webs institucionales. Obtención de datos del estudiante que realiza la encuesta dentro del sitio web y migrarlos a aplicativo externo para poder visualizarlos en los reportes y drashboards correspondiente. Todo el trabajo se realizó en los lenguajes de programación C# y JavaScript con el framework ASP.NET con el patrón de diseño MVC.'
+    },
+    
+]
+
+const certificados = [
+    {
+        instituto: 'Udemy',
+        date: 'Feb 2025',
+        titulo: 'Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL',
+        // descripcion: 'Integración de un software de medición externo en las plataformas estudiantiles de la institución para poder visualizar una ventana modal dentro del sitio web, realizado en ASP.NET Core MVC, JavaScript y HTML. Automatización de envío de correos masivos con la creación de una API mediante el lenguaje de programación python.'
+    }, 
+    {
+        instituto: 'Udemy',
+        date: 'May 2025',
+        titulo: 'Master en JavaScript 2025: Aprender JS, Angular, Node, Astro',
+        // descripcion: 'Integración de un software de medición externo en las plataformas estudiantiles de la institución para poder visualizar una ventana modal dentro del sitio web, realizado en ASP.NET Core MVC, JavaScript y HTML. Automatización de envío de correos masivos con la creación de una API mediante el lenguaje de programación python.'
+    }
+]
+--- 
+<section id="educacion" class="scroll-mt-24 py-2 bg-neutral-950 text-cyan-100">
+  <div class="max-w-4xl mx-auto px-3">
+
+    <!-- Educación formal -->
+    <div class="space-y-6 mb-12">
+
+      {
+         educacion.map(educacion => (
+            <div class="border-l-4 border-cyan-300 pl-4">
+              <h3 class="text-2xl font-semibold">{educacion.titulo}</h3>
+              <p class="text-2sm text-cyan-200">{educacion.universidad} · {educacion.date}</p>
+              {/* <p class="text-sm text-gray-400 mt-1">Especialización en desarrollo de software y tecnologías web.</p> */}
+            </div>
+         ))
+      }
+
+    </div>
+
+      <!-- Certificados -->
+      <h3 class="text-2xl font-bold text-cyan-200 mb-4">Certificados</h3>
+      <ul class="space-y-4">
+        {
+          certificados.map(certificado => (
+            <li class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer">
+              <p class="font-semibold">{certificado.titulo}</p>
+              <p class="text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+</section>

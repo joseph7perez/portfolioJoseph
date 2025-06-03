@@ -1,0 +1,65 @@
+---
+const navItems = [
+  { href: "#top", label: "Inicio" },
+  { href: "#sobre", label: "Sobre mí" },
+  { href: "#experience", label: "Experiencia" },
+  { href: "#projects", label: "Proyectos" },
+  { href: "#educacion", label: "Educación" },
+];
+---
+
+<style>
+  /* Oculta el checkbox pero mantiene su funcionalidad */
+  input[type="checkbox"]#menu-toggle {
+    display: none;
+  }
+</style>
+
+<script>
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      if (window.scrollY > 10) {
+        header?.classList.add("bg-neutral-950/30", "backdrop-blur-md", "shadow-md");
+      } else {
+        header?.classList.remove("bg-neutral-950/30", "backdrop-blur-md", "shadow-md");
+      }
+    });
+  }
+</script>
+
+<header class="w-full px-4 py-5 flex justify-between md:justify-around items-center  mx-auto fixed top-0 z-50 transition-all duration-300  ">
+  <!-- Foto de perfil -->
+  <img
+    class="rounded-full size-12"
+    src="https://media.licdn.com/dms/image/v2/D4E03AQHNBUf5Wdcvyw/profile-displayphoto-shrink_800_800/B4EZPfTx_OHkAg-/0/1734618325800?e=1753315200&v=beta&t=Xy4wyIqG4y38AvjhdxyhxkfOgL0Vlflldj-I6f2upbA"
+    alt="Foto de perfil"
+  />
+
+  <!-- Botón hamburguesa -->
+  <div class="md:hidden">
+    <label for="menu-toggle" class="cursor-pointer">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+  </div>
+
+  <!-- Menú desktop -->
+  <nav class="hidden md:flex flex-row gap-x-10 opacity-80 text-sm">
+    {navItems.map(item => (
+      <a href={item.href} class="hover:underline">{item.label}</a>
+    ))}
+  </nav>
+
+  <!-- Checkbox oculto para manejar el menú móvil -->
+  <input type="checkbox" id="menu-toggle" class="hidden peer absolute" />
+
+  <!-- Menú móvil -->
+  <nav class="peer-checked:flex hidden flex-col gap-4 bg-gray-900 text-white absolute top-20 left-0 w-full p-4 md:hidden z-50 text-sm">
+    {navItems.map(item => (
+      <a href={item.href} class="hover:underline">{item.label}</a>
+    ))}
+  </nav>
+</header>

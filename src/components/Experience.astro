@@ -1,0 +1,34 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+const experience = [
+    
+    {
+        empresa: 'Politecnico Grancolombiano',
+        lugar: 'Bogotá, Colombia',
+        date: 'Enero 2025 - Febrero 2025',
+        cargo: 'Desarrollador de software',
+        descripcion: 'Modelado, construcción y realización de pruebas funcionales de nueva función en procesos de medición de experiencia en sitios webs institucionales. Obtención de datos del estudiante que realiza la encuesta dentro del sitio web y migrarlos a aplicativo externo para poder visualizarlos en los reportes y drashboards correspondiente. Todo el trabajo se realizó en los lenguajes de programación C# y JavaScript con el framework ASP.NET con el patrón de diseño MVC.'
+    },
+    {
+        empresa: 'Politecnico Grancolombiano',
+        lugar: 'Bogotá, Colombia',
+        date: 'Julio 2024 - Enero 2025',
+        cargo: 'Practicante Ingeniería de Sistemas',
+        descripcion: 'Integración de un software de medición externo en las plataformas estudiantiles de la institución para poder visualizar una ventana modal dentro del sitio web, realizado en ASP.NET Core MVC, JavaScript y HTML. Automatización de envío de correos masivos con la creación de una API mediante el lenguaje de programación python.'
+    }, 
+]
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">   
+    
+    {
+        experience.map(experience => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experience}></ExperienceItem>
+            </li>
+        ))
+    }             
+   
+</ol>
+

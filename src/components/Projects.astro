@@ -1,0 +1,111 @@
+---
+import NextJS from '../icons/NextJS.astro'
+import Php from '../icons/PHP.astro'
+import Tailwind from '../icons/Tailwind.astro'
+import JavaScript from '../icons/JavaScript.astro'
+import Sass from '../icons/Sass.astro'
+import Html from '../icons/Html.astro'
+import MySQL from '../icons/MySQL.astro'
+    
+    export const tags = {
+        NEXTJS: {
+            name: 'Next.js',
+            icon: NextJS
+        },
+        TAILWIND: {
+            name: 'Tailwind',
+            icon: Tailwind
+        },
+        PHP: {
+            name: 'PHP',
+            icon: Php
+        },
+        JavaScript: {
+            name: 'JavaScript',
+            icon: JavaScript
+        },
+        Sass: {
+            name: 'Sass',
+            icon: Sass
+        },
+        Html: {
+            name: 'HTML',
+            icon: Html
+        },
+        MySQL: {
+            name: 'MySQL',
+            icon: MySQL
+        },
+    }
+
+    export const projects = [ 
+        {
+            title: 'Tecnho & EDM Festival',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae, ea enim? Ab nostrum numquam labore aperiam ipsa esse.',
+            link: 'https://technofestivaljoseph.netlify.app/',
+            github: 'https://github.com/joseph7perez/technofestival',
+            image: '/projects/ejemplo.avif',
+            tags: [tags.Html ,tags.Sass ,tags.JavaScript],
+            slug: '1'
+        },
+        {
+            title: 'UpTask',
+            description: 'Sitio web con dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes.',
+            link: '#',
+            github: 'https://github.com/joseph7perez/UpTask',
+            image: '/projects/UpTask.avif',
+            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
+            slug: '2'
+
+        },
+          {
+            title: 'BarberShop',
+            description: 'Sitio web para el agendamiento y reservas de citas para una barbería. Con panel de administrador para el CRUD de servicios.',
+            link: '#',
+            github: 'https://github.com/joseph7perez/barberShop',
+            image: '/projects/UpTask.avif',
+            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
+                        slug: '3'
+
+        },
+          {
+            title: 'UpTask',
+            description: 'Sitio web con dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes',
+            link: '#',
+            github: 'https://github.com/joseph7perez/UpTask',
+            image: '/projects/UpTask.avif',
+            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass],
+                        slug: '4'
+
+        }
+    ]
+
+    console.log(projects)
+---
+
+{
+    projects.map(project => (
+        <a href={`/projects/${project.slug}`} class="hover:scale-101 hover:bg-white/5 transition  ">
+             <article class="flex flex-col items-center text-center p-4">
+                <h3 class="text-2xl font-semibold text-cyan-200 mb-2 ">{project.title}</h3>
+                <p class="text-1xs lg:text-mg mb-4 text-pretty">{project.description}</p>
+                <ul class="flex gap-x-4 flex-row mb-4">
+                    {project.tags.map(tag => (
+                        <li class="group flex flex-col items-center">
+                            <span class={`flex gap-x-2 rounded-full text-1xs py-1 px-2 items-center font-semibold`}>
+                                <tag.icon class="size-8"></tag.icon>     
+                            </span>
+                            <span class="text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"> {tag.name}</span>
+                        </li>
+                    ))}
+                </ul>
+                <img 
+                class="rounded shadow-2xl shadow-cyan-200/20 w-80"
+                src={project.image} 
+                alt={`Captura de pantalla  ${project.title}`}/>
+
+            </article>
+        </a>
+       
+    ))
+}

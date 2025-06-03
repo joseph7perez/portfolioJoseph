@@ -1,11 +1,138 @@
 ---
+import Badge from '../components/Badge.astro';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Linkedin from '../icons/Linkedin.astro';
+import Github from '../icons/Github.astro';
+import Instagram from '../icons/Instagram.astro';
+import Facebook from '../icons/Facebook.astro';
+import Email from '../icons/Email.astro';
+import SocialPill from '../components/SocialPill.astro';
+import Experience from '../components/Experience.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Projects from '../components/Projects.astro';
+import SobreMi from '../components/SobreMi.astro';
+import Contacto from '../components/Contacto.astro';
+import Educacion from '../components/Educacion.astro';
+import Briefcase from '../icons/Briefcase.astro';
+import CodeBranch from '../icons/CodeBranch.astro';
+import UserSuit from '../icons/UserSuit.astro';
+import UserGraduate from '../icons/UserGraduate.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Porfolio Joseph Perez - Desarrollador y Programador Web" description='Especializado en el desarrollo frontend y en la creacion de sitios web'>
+	<main>
+		<SectionContainer id="top" class="h-screen flex flex-col items-center justify-center">
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-3 pb-5 lg:pb-8">
+				Hola, soy Joseph Pérez 
+				<a 
+				href="https://www.linkedin.com/in/joseph-nicolas-p%C3%A9rez-sarmiento-250898244/"
+				target="_blank"
+				rel="noopener"
+				class="flex justify-center items-center"> 
+				 <Badge> Disponible para trabajar </Badge> </a> </h1>
+			<h2 class="text-sm lg:text-xl opacity-80 text-wrap max-w-[700px]">Ingeniero de sistemas y desarrollador de software especializado en FrontEnd con 2 años de experiencia. 
+				Ubicado en Bogotá, Colombia.  </h2>
+			<!-- <h2>Cuento con experiencia en la creación de sitios web funcionales y escalables, 
+				utilizando tecnologías como HTML, CSS, SASS, PHP, JavaScript, TypeScript, .NET, 
+				Angular y Node.js. Con experiencia en lenguajes de programación como Python, PHP, Java y C#.</h2>	 -->
+			<nav class="flex gap-5 justify-center mt-5">
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="https://github.com/joseph7perez">
+						<Github class="size-5 lg:size-6 text-white"/>
+
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">GitHub</span>
+
+				</div>
+				
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="https://www.linkedin.com/in/joseph-nicolas-p%C3%A9rez-sarmiento-250898244/">
+						<Linkedin class="size-5 lg:size-6 text-white"/>
+
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Linkedin</span>
+
+				</div>
+
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="https://www.instagram.com/joseph_perez7/">
+						<Instagram class="size-5 lg:size-6 text-white"/>
+
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Instagram</span>
+
+				</div>
+
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="mailto:josephperezsarmiento@hotmail.com">
+						<Email class="size-5 lg:size-6 text-white"/>
+
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Email</span>
+
+				</div>
+
+				<!-- <SocialPill href="https://www.facebook.com/share/15YwzYpHTb/?mibextid=wwXIfr">
+					<Facebook class="size-5 lg:size-6 text-white"/>
+					<span class="">Facebook</span>
+
+				</SocialPill> -->
+					
+
+			</nav>
+
+			<a href="#sobre" class="inline-block mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition">
+				Ver más
+			</a>
+		</SectionContainer>
+
+		<SectionContainer id="sobre" class="scroll-mt-24 mb-24">
+			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<UserSuit class="size-6"></UserSuit>
+				Sobre mí
+			</h2>
+			<SobreMi></SobreMi>
+		</SectionContainer>
+
+		<SectionContainer id="experience" class="scroll-mt-24 mb-24">
+			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<Briefcase class="size-6"></Briefcase>
+				Experiencia laboral
+			</h2>
+			<Experience></Experience>
+		</SectionContainer>
+
+		<SectionContainer id="projects" class="scroll-mt-24 mb-24 " >
+			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<CodeBranch class="size-6"></CodeBranch>
+				Proyectos
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+				<Projects></Projects>
+
+			</div>
+		</SectionContainer>		
+
+		<!-- <SectionContainer id="sobre" class="scroll-mt-24">
+			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<CodeBranch class="size-6"></CodeBranch>
+				Contacto
+			</h2>
+			<Contacto></Contacto>
+
+		</SectionContainer> -->
+
+		<SectionContainer id="educacion" class="scroll-mt-24 mb-24">
+			<h2 class="text-3xl font-bold mb-3 flex gap-x-3 items-center text-cyan-200" >
+				<UserGraduate class="size-6"></UserGraduate>
+				Educación y Certificados
+			</h2>
+			<Educacion></Educacion>
+
+		</SectionContainer>
+	</main>
 </Layout>
