@@ -18,9 +18,11 @@ import Briefcase from '../icons/Briefcase.astro';
 import CodeBranch from '../icons/CodeBranch.astro';
 import UserSuit from '../icons/UserSuit.astro';
 import UserGraduate from '../icons/UserGraduate.astro';
+import File from '../icons/File.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
 ---
 
 <Layout title="Porfolio Joseph Perez - Desarrollador y Programador Web" description='Especializado en el desarrollo frontend y en la creacion de sitios web'>
@@ -76,12 +78,14 @@ import UserGraduate from '../icons/UserGraduate.astro';
 
 				</div>
 
-				<!-- <SocialPill href="https://www.facebook.com/share/15YwzYpHTb/?mibextid=wwXIfr">
-					<Facebook class="size-5 lg:size-6 text-white"/>
-					<span class="">Facebook</span>
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="/certificados/HVJosephPerezS.pdf" download >
+						<File class="size-5 lg:size-6 text-white"/>
 
-				</SocialPill> -->
-					
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"> CV</span>
+
+				</div>					
 
 			</nav>
 
@@ -90,7 +94,7 @@ import UserGraduate from '../icons/UserGraduate.astro';
 			</a>
 		</SectionContainer>
 
-		<SectionContainer id="sobre" class="scroll-mt-24 mb-24">
+		<SectionContainer id="sobre" class="scroll-mt-34  mb-24 transition-all duration-2500 opacity-0 translate-y-10 reveal ">
 			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
 				<UserSuit class="size-6"></UserSuit>
 				Sobre mí
@@ -98,7 +102,7 @@ import UserGraduate from '../icons/UserGraduate.astro';
 			<SobreMi></SobreMi>
 		</SectionContainer>
 
-		<SectionContainer id="experience" class="scroll-mt-24 mb-24">
+		<SectionContainer id="experience" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
 			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
 				<Briefcase class="size-6"></Briefcase>
 				Experiencia laboral
@@ -106,7 +110,7 @@ import UserGraduate from '../icons/UserGraduate.astro';
 			<Experience></Experience>
 		</SectionContainer>
 
-		<SectionContainer id="projects" class="scroll-mt-24 mb-24 " >
+		<SectionContainer id="projects" class="scroll-mt-30 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal" >
 			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
 				<CodeBranch class="size-6"></CodeBranch>
 				Proyectos
@@ -126,8 +130,8 @@ import UserGraduate from '../icons/UserGraduate.astro';
 
 		</SectionContainer> -->
 
-		<SectionContainer id="educacion" class="scroll-mt-24 mb-24">
-			<h2 class="text-3xl font-bold mb-3 flex gap-x-3 items-center text-cyan-200" >
+		<SectionContainer id="educacion" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
+			<h2 class="text-3xl font-bold mb-3 flex gap-x-3 items-center " >
 				<UserGraduate class="size-6"></UserGraduate>
 				Educación y Certificados
 			</h2>
@@ -136,3 +140,21 @@ import UserGraduate from '../icons/UserGraduate.astro';
 		</SectionContainer>
 	</main>
 </Layout>
+
+<script is:inline>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        observer.unobserve(entry.target); // solo una vez
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+</script>

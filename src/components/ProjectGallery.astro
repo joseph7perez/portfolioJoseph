@@ -1,0 +1,50 @@
+---
+const { images } = Astro.props;
+
+const images1 = [
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg",
+  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg",
+];
+
+// Agrupar de 3 en 3
+const chunkedImages = [];
+for (let i = 0; i < images.length; i += 3) {
+  chunkedImages.push(images.slice(i, i + 3));
+}
+
+//Resultado
+// [
+//   ["img1", "img2", "img3"],
+//   ["img4", "img5", "img6"],
+//   ["img7", "img8", "img9"]
+// ]
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+  {images.map((img: string | null | undefined, i: number) => (
+    <img src={img} alt={`Imagen ${i + 1}`} class="rounded-xl shadow-md" loading="lazy" />
+  ))}
+</div>
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <!-- Mostrar grupos de a tres imagenes -->
+  {chunkedImages.map((group) => (
+    <div class="grid gap-4">
+      {group.map((url: string | null | undefined) => (
+        // Mostrar cada imagen
+        <div>
+          <img class="h-auto max-w-full rounded-lg" src={url} alt="Image" />
+        </div>
+      ))}
+    </div>
+  ))}
+</div>

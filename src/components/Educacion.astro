@@ -2,14 +2,13 @@
 import { date } from "astro:schema"
 
 const educacion = [
-    
+
     {
         universidad: 'Politécnico Grancolombiano',
         date: '2021 - 2025',
         titulo: 'Ingeniería de Sistemas',
-        // descripcion: 'Modelado, construcción y realización de pruebas funcionales de nueva función en procesos de medición de experiencia en sitios webs institucionales. Obtención de datos del estudiante que realiza la encuesta dentro del sitio web y migrarlos a aplicativo externo para poder visualizarlos en los reportes y drashboards correspondiente. Todo el trabajo se realizó en los lenguajes de programación C# y JavaScript con el framework ASP.NET con el patrón de diseño MVC.'
     },
-    
+
 ]
 
 const certificados = [
@@ -17,16 +16,21 @@ const certificados = [
         instituto: 'Udemy',
         date: 'Feb 2025',
         titulo: 'Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL',
-        // descripcion: 'Integración de un software de medición externo en las plataformas estudiantiles de la institución para poder visualizar una ventana modal dentro del sitio web, realizado en ASP.NET Core MVC, JavaScript y HTML. Automatización de envío de correos masivos con la creación de una API mediante el lenguaje de programación python.'
-    }, 
+        imagen: '',
+        archivo: '/certificados/CertificadoDesarrolloWebCompleto.pdf'
+    },
     {
         instituto: 'Udemy',
         date: 'May 2025',
         titulo: 'Master en JavaScript 2025: Aprender JS, Angular, Node, Astro',
-        // descripcion: 'Integración de un software de medición externo en las plataformas estudiantiles de la institución para poder visualizar una ventana modal dentro del sitio web, realizado en ASP.NET Core MVC, JavaScript y HTML. Automatización de envío de correos masivos con la creación de una API mediante el lenguaje de programación python.'
+        imagen: '/certificados/certificadoMasterJS.avif',
+        archivo: '/certificados/certificadoMasterJS.pdf'
+
     }
-]
---- 
+];
+
+let selectedCert = null;
+---
 <section id="educacion" class="scroll-mt-24 py-2 bg-neutral-950 text-cyan-100">
   <div class="max-w-4xl mx-auto px-3">
 
@@ -47,15 +51,74 @@ const certificados = [
 
       <!-- Certificados -->
       <h3 class="text-2xl font-bold text-cyan-200 mb-4">Certificados</h3>
-      <ul class="space-y-4">
+      <!-- <ul class="space-y-4">
         {
-          certificados.map(certificado => (
-            <li class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer">
-              <p class="font-semibold">{certificado.titulo}</p>
-              <p class="text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
+          certificados.map((certificado, i) => (
+            <li class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition group "
+                // onclick={`document.getElementById('modal-${i}').showModal()`}
+            >
+               <a
+                  href={certificado.archivo}
+                  download 
+                >
+                    <p class="font-semibold">{certificado.titulo}</p>
+                    <p class="text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
+                </a>
+                {/* <span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">CV</span> */}
+
             </li>
           ))
         }
-      </ul>
+      </ul> -->
+      {
+          certificados.map((certificado, i) => (
+            <div class="group flex flex-col justify-center content-center "
+                // onclick={`document.getElementById('modal-${i}').showModal()`}
+            >
+
+               <a
+                  href={certificado.archivo}
+                  download 
+                  class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
+                >
+                    <p class="font-semibold">{certificado.titulo}</p>
+                    <p class="text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
+                </a>
+
+                <span class="mb-2 text-xs md:text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Descargar</span>
+
+            </div>
+          ))
+        }
     </div>
+
+    
+
 </section>
+
+
+
+<!-- Modal -->
+<!-- <dialog id="modal" class="backdrop:bg-black/70 p-0 rounded-xl overflow-hidden">
+  <div class="bg-white dark:bg-neutral-900 p-6 w-[90vw] max-w-2xl relative">
+    <button
+      class="absolute top-2 right-2 text-gray-500 hover:text-red-500"
+      onclick="document.getElementById('modal').close();"
+    >
+      ✕
+    </button>
+    {selectedCert && (
+      <>
+        <h3 class="text-lg font-semibold text-cyan-100 mb-4">{selectedCert.nombre}</h3>
+        <img src={selectedCert.imagen} alt={selectedCert.nombre} class="w-full rounded shadow mb-4" />
+        <a
+          href={selectedCert.archivo}
+          download
+          class="inline-block bg-cyan-500 text-white py-2 px-4 rounded hover:bg-cyan-600"
+        >
+          Descargar
+        </a>
+      </>
+    )}
+  </div>
+</dialog> -->

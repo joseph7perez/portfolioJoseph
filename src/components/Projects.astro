@@ -10,48 +10,72 @@ import MySQL from '../icons/MySQL.astro'
     export const tags = {
         NEXTJS: {
             name: 'Next.js',
-            icon: NextJS
+            icon: NextJS,
+            color: 'text-[#fff]'
+
         },
         TAILWIND: {
             name: 'Tailwind',
-            icon: Tailwind
+            icon: Tailwind,
+            color: 'text-[#39bef7]'
+
         },
         PHP: {
             name: 'PHP',
-            icon: Php
+            icon: Php,
+            color: 'text-[#fff]'
+
         },
         JavaScript: {
             name: 'JavaScript',
-            icon: JavaScript
+            icon: JavaScript,
+            color: 'text-[#f0da4f]'
+
         },
         Sass: {
             name: 'Sass',
-            icon: Sass
+            icon: Sass,
+            color: 'text-[#e06ea7]'
+
         },
         Html: {
             name: 'HTML',
-            icon: Html
+            icon: Html,
+            color: 'text-[#ff804a]'
+
         },
         MySQL: {
             name: 'MySQL',
-            icon: MySQL
+            icon: MySQL,
+            color: 'text-[#006a87]'
+
         },
     }
 
     export const projects = [ 
         {
-            title: 'Tecnho & EDM Festival',
+            title: 'TecnhoFestival',
             description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae, ea enim? Ab nostrum numquam labore aperiam ipsa esse.',
             link: 'https://technofestivaljoseph.netlify.app/',
             github: 'https://github.com/joseph7perez/technofestival',
             image: '/projects/ejemplo.avif',
+            images: [
+                '/projects/ejemplo.avif',
+                '/projects/UpTask.avif',
+                '/projects/ejemplo.avif',
+                '/projects/UpTask.avif',
+                '/projects/ejemplo.avif',
+                '/projects/UpTask.avif',
+                '/projects/ejemplo.avif',
+                '/projects/UpTask.avif',
+            ],
             tags: [tags.Html ,tags.Sass ,tags.JavaScript],
             slug: '1'
         },
         {
             title: 'UpTask',
             description: 'Sitio web con dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes.',
-            link: '#',
+            link: '',
             github: 'https://github.com/joseph7perez/UpTask',
             image: '/projects/UpTask.avif',
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
@@ -61,26 +85,26 @@ import MySQL from '../icons/MySQL.astro'
           {
             title: 'BarberShop',
             description: 'Sitio web para el agendamiento y reservas de citas para una barbería. Con panel de administrador para el CRUD de servicios.',
-            link: '#',
+            link: '',
             github: 'https://github.com/joseph7perez/barberShop',
             image: '/projects/UpTask.avif',
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-                        slug: '3'
+            slug: '3'
 
         },
           {
-            title: 'UpTask',
+            title: 'DevWebcamp',
             description: 'Sitio web con dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes',
-            link: '#',
-            github: 'https://github.com/joseph7perez/UpTask',
+            link: '',
+            github: 'https://github.com/joseph7perez/DevWebcamp',
             image: '/projects/UpTask.avif',
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass],
-                        slug: '4'
+            slug: '4'
 
         }
     ]
 
-    console.log(projects)
+    // console.log(projects)
 ---
 
 {
@@ -93,9 +117,9 @@ import MySQL from '../icons/MySQL.astro'
                     {project.tags.map(tag => (
                         <li class="group flex flex-col items-center">
                             <span class={`flex gap-x-2 rounded-full text-1xs py-1 px-2 items-center font-semibold`}>
-                                <tag.icon class="size-8"></tag.icon>     
+                                <tag.icon class={`size-8  `}></tag.icon>     
                             </span>
-                            <span class="text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"> {tag.name}</span>
+                            <span class={`text-xs md:text-sm ${tag.color} font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300`}> {tag.name}</span>
                         </li>
                     ))}
                 </ul>

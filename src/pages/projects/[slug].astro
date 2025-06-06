@@ -3,65 +3,89 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Projects from '../../components/Projects.astro';
 import { projects } from '../../components/Projects.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Github from '../../icons/Github.astro';
 
 
 export async function getStaticPaths () {
     // const projects = await getCollection('projects');
-
-    return projects.map((project) => ({
-      params: {slug: project.slug},
-      props: {project}
-    }))
+  
+    return [
+      {params: {slug: '1'}},
+      {params: {slug: '2'}},
+      {params: {slug: '3'}},
+      {params: {slug: '4'}},
+      {params: {slug: '5'}},
+    ];
 };
 
-const { project } = Astro.props;
+const { slug } = Astro.params;
+
+let slugProject = '';
+
+    projects.map(project => (
+      slugProject = project.slug
+    ));
+
+// const { project } = Astro.props;
 
 // const projects = await getCollection('projects');
-// const project = projects.find((a: { slug: string | undefined; }) => a.slug === Astro.params.slug);
+const project = projects.find(a => a.slug === slug);
 
 // import { projects } from '../../components/Projects.astro';
-// import ProjectGallery from '../../components/ProjectGallery.astro';
 // import TechnologyBadge from '../../components/TechnologyBadge.astro';
 
 // const { id } = Astro.params;
 // const project = projects.find(p => p.id === id);
 
 if (!project) {
-   throw new Error(`Proyecto no encontrado para slug: ${Astro.params.slug}`);
+   throw new Error(`Proyecto no encontrado para slug: ${slug}`);
 }
 ---
 
-<Layout title='' description=''>
-    <h1>{project.title}</h1>
-    <p>{project.description}</p>
+<!-- <Layout title='' description=''>
+  <h1>{slug}</h1>
+  <p>{project.title}</p>
+  <p>{project.description}</p>
 
-</Layout>
-<!-- 
-<Layout title='' description=''>
-  <section class="max-w-5xl mx-auto px-4 py-10">
+    {
+      // projects.map(project => (
+      //   const id = project.slug;
+      
+      // ))
+    
+    }
+ 
+
+</Layout> -->
+<ProjectLayout>
+  <section class="max-w-5xl mx-auto px-4 py-10 mt-20">
     <h1 class="text-4xl font-bold mb-4">{project.title}</h1>
 
     <p class="text-lg text-gray-600 mb-6">{project.description}</p>
 
-    {project.images && <ProjectGallery images={project.images} />} -->
+    {project.images && <ProjectGallery images={project.images} />}
 
-    <!-- <div class="mt-6 flex flex-wrap gap-2"> -->
-      <!-- {project.technologies.map(tech => (
+     <!-- <div class="mt-6 flex flex-wrap gap-2"> 
+       {project.technologies.map(tech => (
         <TechnologyBadge tech={tech} />
       ))} 
-    </div>
+    </div> -->
 
     <div class="mt-8 flex gap-4">
       {project.github && (
-        <a href={project.github} target="_blank" class="text-cyan-600 underline">
-          Ver en GitHub
+        <a href={project.github} target="_blank" class="text-white bg-[#24292F] focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2">
+          <Github class="size-5 mr-1"></Github>
+           Ver en GitHub
         </a>
       )}
-       {project.demo && (
-        <a href={project.demo} target="_blank" class="text-cyan-600 underline">
-          Ver Demo
+       {project.link && (
+        <a href={project.link} target="_blank" class="text-cyan-600 underline">
+          
+          Ver link
         </a>
       )} 
     </div>
   </section>
-</Layout> -->
+</ProjectLayout> 
