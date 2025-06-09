@@ -1,0 +1,18 @@
+---
+const { tags } = Astro.props;
+
+
+
+---
+  
+  
+  <ul class="flex gap-x-4 flex-row mb-4 justify-around">
+    {tags.map((tag: { icon: any; color: any; name: unknown; }) => (
+        <li class="group flex flex-col items-center">
+            <span class={`flex gap-x-2 rounded-full text-1xs py-1 px-2 items-center font-semibold`}>
+                <tag.icon class={`size-8 sm:size-12 md:size-15`}></tag.icon>     
+            </span>
+            <span class={`text-xs md:text-lg ${tag.color} font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300`}> {tag.name}</span>
+        </li>
+    ))}
+</ul>

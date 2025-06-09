@@ -1,23 +1,13 @@
 ---
-const { images } = Astro.props;
-
-const images1 = [
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg",
-  "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg",
-];
+const { images, imagesMobile } = Astro.props;
 
 // Agrupar de 3 en 3
 const chunkedImages = [];
-for (let i = 0; i < images.length; i += 3) {
-  chunkedImages.push(images.slice(i, i + 3));
+for (let i = 0; i < images.length; i += 2) {
+  chunkedImages.push(images.slice(i, i + 2));
 }
+
+// const imagenMobile = imagesMobile[1];
 
 //Resultado
 // [
@@ -27,24 +17,72 @@ for (let i = 0; i < images.length; i += 3) {
 // ]
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+<!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
   {images.map((img: string | null | undefined, i: number) => (
     <img src={img} alt={`Imagen ${i + 1}`} class="rounded-xl shadow-md" loading="lazy" />
   ))}
-</div>
+</div> -->
 
 
-
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
   <!-- Mostrar grupos de a tres imagenes -->
-  {chunkedImages.map((group) => (
+  {images.map((img: string | null | undefined) => (
     <div class="grid gap-4">
-      {group.map((url: string | null | undefined) => (
-        // Mostrar cada imagen
         <div>
-          <img class="h-auto max-w-full rounded-lg" src={url} alt="Image" />
+          <img loading="lazy" class="h-auto max-w-full rounded-lg" src={img} alt="Image" />
         </div>
-      ))}
     </div>
   ))}
 </div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+  {imagesMobile.map((img: string | null | undefined) => (
+      // <div class="relative mx-auto border-gray-700 dark:border-gray-700 bg-gray-700 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl mt-5.5">
+      //     <div class="w-[148px] h-[18px] bg-gray-700 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+      //     <div class="h-[46px] w-[3px] bg-gray-700 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+      //     <div class="h-[46px] w-[3px] bg-gray-700 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+      //     <div class="h-[64px] w-[3px] bg-gray-700 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+      //     <div class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+      //         <img src={img} class="hidden dark:block w-[272px] h-[572px]" alt="imagenMobile">
+      //     </div>
+      // </div>
+
+        <div class="relative mx-auto border-gray-700 dark:border-gray-700 bg-gray-700 border-[10px] rounded-[2rem] md:border-[14px] md:rounded-[2.5rem] shadow-xl mt-5
+              w-[200px] h-[400px]  md:w-[300px] md:h-[600px]">
+
+            <!-- Botón superior (borde superior del teléfono) -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gray-700 rounded-b-[0.75rem]
+                        w-[100px] h-[14px]  md:w-[148px] md:h-[18px]">
+            </div>
+
+            <!-- Botones laterales (izquierda) -->
+            <div class="absolute bg-gray-700 rounded-s-lg
+                        w-[2px] h-[32px]  md:w-[3px] md:h-[46px] 
+                        -start-[12px] md:-start-[17px] top-[80px] md:top-[124px]">
+            </div>
+            <div class="absolute bg-gray-700 rounded-s-lg
+                        w-[2px] h-[32px]  md:w-[3px] md:h-[46px] 
+                        -start-[12px] md:-start-[17px] top-[120px]  md:top-[178px]">
+            </div>
+
+            <!-- Botón lateral (derecha) -->
+            <div class="absolute bg-gray-700 rounded-e-lg
+                        w-[2px] h-[48px]  md:w-[3px] md:h-[64px]
+                        -end-[12px] md:-end-[17px] top-[100px]  md:top-[142px]">
+            </div>
+
+            <!-- Pantalla -->
+            <div class="overflow-hidden rounded-[1.5rem] bg-white dark:bg-gray-800
+                        w-[180px] h-[380px]  md:w-[272px] md:h-[572px]">
+              <img src={img} class="w-full h-full object-cover dark:block hidden" alt="imagenMobile" />
+              <!-- Si quieres usar una imagen clara para light mode -->
+              <!-- <img src={imgLight} class="w-full h-full object-cover dark:hidden" alt="imagenMobile Light" /> -->
+            </div>
+          </div>
+    ))}
+</div>
+
+
+
+

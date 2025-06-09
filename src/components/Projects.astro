@@ -55,53 +55,87 @@ import MySQL from '../icons/MySQL.astro'
     export const projects = [ 
         {
             title: 'TecnhoFestival',
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae, ea enim? Ab nostrum numquam labore aperiam ipsa esse.',
+            description: 'Este proyecto está diseñado para capturar la energía y la esencia de un festival de música electrónica. En la sección principal, un video en bucle de un DJ en vivo da la bienvenida a los visitantes. El sitio incluye un Line Up, donde se destacan los artistas y horarios de presentación. También cuenta con una galería de imágenes dinámica, que permite hacer clic sobre cada foto para verla en pantalla completa. Finalmente, los usuarios pueden acceder fácilmente a la sección de boletos disponibles, donde pueden consultar precios y lo que incluye.',
             link: 'https://technofestivaljoseph.netlify.app/',
             github: 'https://github.com/joseph7perez/technofestival',
-            image: '/projects/ejemplo.avif',
+            image: '/projects/tecnoFestival5.avif',
             images: [
-                '/projects/ejemplo.avif',
-                '/projects/UpTask.avif',
-                '/projects/ejemplo.avif',
-                '/projects/UpTask.avif',
-                '/projects/ejemplo.avif',
-                '/projects/UpTask.avif',
-                '/projects/ejemplo.avif',
-                '/projects/UpTask.avif',
+                '/projects/tecnoFestival5.avif',
+                '/projects/tecnoFestival4.avif',
+                '/projects/tecnoFestival3.avif',
+                '/projects/tecnoFestival6.avif',
+            ],
+            imagesMobile: [
+                '/projects/tecnoFestival1.avif',
+                '/projects/tecnoFestival2.avif',
+                '/projects/tecnoFestival7.avif',
             ],
             tags: [tags.Html ,tags.Sass ,tags.JavaScript],
             slug: '1'
         },
         {
             title: 'UpTask',
-            description: 'Sitio web con dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes.',
+            description: 'Sitio web dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes. Con CRUD de los proyectos y de las tareas',
             link: '',
             github: 'https://github.com/joseph7perez/UpTask',
-            image: '/projects/UpTask.avif',
+            image: '/projects/Uptask2.avif',
+            images: [
+                '/projects/Uptask2.avif',
+                '/projects/Uptask3.avif',
+                '/projects/Uptask5.avif',
+                '/projects/Uptask6.avif',
+            ],
+            imagesMobile: [
+                '/projects/Uptask1.avif',
+                '/projects/Uptask4.avif',
+                '/projects/Uptask7.avif',
+            ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
             slug: '2'
-
         },
           {
             title: 'BarberShop',
-            description: 'Sitio web para el agendamiento y reservas de citas para una barbería. Con panel de administrador para el CRUD de servicios.',
+            description: 'Sitio web responsive para el agendamiento y reservas de citas para una barbería, en donde el cliente podrá escoger el o los servicios que desea, elegir la fecha y hora, finalmente podrá ver el resumen de su cita. El sitio web cuenta con panel de administrador para la gestión del CRUD de los servicios ofrecidos por la barbería y en donde también podrá visualizar las citas asignadas en el día seleccionado.',
             link: '',
             github: 'https://github.com/joseph7perez/barberShop',
-            image: '/projects/UpTask.avif',
+            image: '/projects/barberShop1.avif',
+              images: [
+                '/projects/barberShop1.avif',
+                '/projects/barberShop2.avif',
+                '/projects/barberShop3.avif',
+                '/projects/barberShop4.avif',
+            ],
+            imagesMobile: [
+                '/projects/barberShop5.avif',
+                '/projects/barberShop6.avif',
+                '/projects/barberShop7.avif',
+            ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
             slug: '3'
 
         },
           {
             title: 'DevWebcamp',
-            description: 'Sitio web con dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes',
+            description: 'Sitio web responsive con dashboard en el panel admin para la gestión del CRUD de ponentes, eventos, registrados y regalos. Evento sobre desarrollo web, con las conferencias disponibles y su respectiva información (fecha, lugar, ponente y tema), con los paquetes y boletos disponibles. Con un login, creación de cuenta, recuperación de contraseña y confirmación de cuenta.',
             link: '',
             github: 'https://github.com/joseph7perez/DevWebcamp',
-            image: '/projects/UpTask.avif',
-            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass],
+            image: '/projects/DevWebcamp7.avif',
+            images: [
+                '/projects/DevWebcamp1.avif',
+                '/projects/DevWebcamp2.avif',
+                '/projects/DevWebcamp3.avif',
+                '/projects/DevWebcamp7.avif',
+            ],
+            imagesMobile: [
+                '/projects/DevWebcamp5.avif',
+                '/projects/DevWebcamp4.avif',
+                '/projects/DevWebcamp6.avif',
+            ],
+            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
             slug: '4'
 
-        }
+        },
+       
     ]
 
     // console.log(projects)
@@ -112,8 +146,8 @@ import MySQL from '../icons/MySQL.astro'
         <a href={`/projects/${project.slug}`} class="hover:scale-101 hover:bg-white/5 transition  ">
              <article class="flex flex-col items-center text-center p-4">
                 <h3 class="text-2xl font-semibold text-cyan-200 mb-2 ">{project.title}</h3>
-                <p class="text-1xs lg:text-mg mb-4 text-pretty">{project.description}</p>
-                <ul class="flex gap-x-4 flex-row mb-4">
+                <p class="text-1xs lg:text-mg mb-4 text-pretty line-clamp-4">{project.description}</p>
+                {/* <ul class="flex gap-x-4 flex-row mb-4">
                     {project.tags.map(tag => (
                         <li class="group flex flex-col items-center">
                             <span class={`flex gap-x-2 rounded-full text-1xs py-1 px-2 items-center font-semibold`}>
@@ -122,14 +156,16 @@ import MySQL from '../icons/MySQL.astro'
                             <span class={`text-xs md:text-sm ${tag.color} font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300`}> {tag.name}</span>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
                 <img 
+                loading="lazy"
                 class="rounded shadow-2xl shadow-cyan-200/20 w-80"
                 src={project.image} 
-                alt={`Captura de pantalla  ${project.title}`}/>
+                alt={`Captura de pantalla  ${project.title}`}
+                class="max-w-7"
+                />
 
             </article>
         </a>
-       
     ))
 }
