@@ -38,15 +38,6 @@ for (let i = 0; i < images.length; i += 2) {
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
   {imagesMobile.map((img: string | null | undefined) => (
-      // <div class="relative mx-auto border-gray-700 dark:border-gray-700 bg-gray-700 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl mt-5.5">
-      //     <div class="w-[148px] h-[18px] bg-gray-700 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-      //     <div class="h-[46px] w-[3px] bg-gray-700 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-      //     <div class="h-[46px] w-[3px] bg-gray-700 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-      //     <div class="h-[64px] w-[3px] bg-gray-700 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-      //     <div class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
-      //         <img src={img} class="hidden dark:block w-[272px] h-[572px]" alt="imagenMobile">
-      //     </div>
-      // </div>
 
         <div class="relative mx-auto border-gray-700 dark:border-gray-700 bg-gray-700 border-[10px] rounded-[2rem] md:border-[14px] md:rounded-[2.5rem] shadow-xl mt-5
               w-[200px] h-[400px]  md:w-[300px] md:h-[600px]">
@@ -75,9 +66,7 @@ for (let i = 0; i < images.length; i += 2) {
             <!-- Pantalla -->
             <div class="overflow-hidden rounded-[1.5rem] bg-white dark:bg-gray-800
                         w-[180px] h-[380px]  md:w-[272px] md:h-[572px]">
-              <img src={img} class="w-full h-full object-cover dark:block hidden" alt="imagenMobile" />
-              <!-- Si quieres usar una imagen clara para light mode -->
-              <!-- <img src={imgLight} class="w-full h-full object-cover dark:hidden" alt="imagenMobile Light" /> -->
+              <img loading="lazy" src={img} class="w-full h-full object-cover dark:block hidden" alt="imagenMobile" />
             </div>
           </div>
     ))}
