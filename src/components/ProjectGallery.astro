@@ -39,7 +39,7 @@ for (let i = 0; i < images.length; i += 2) {
 
   {imagesMobile.map((img: string | null | undefined) => (
 
-        <div class="relative mx-auto border-gray-700 dark:border-gray-700 bg-gray-700 border-[10px] rounded-[2rem] md:border-[14px] md:rounded-[2.5rem] shadow-xl mt-5
+        <div class="relative mx-auto border-gray-700 bg-gray-700 border-[10px] rounded-[2rem] md:border-[14px] md:rounded-[2.5rem] shadow-xl mt-5
               w-[200px] h-[400px]  md:w-[300px] md:h-[600px]">
 
             <!-- Botón superior (borde superior del teléfono) -->
@@ -64,9 +64,9 @@ for (let i = 0; i < images.length; i += 2) {
             </div>
 
             <!-- Pantalla -->
-            <div class="overflow-hidden rounded-[1.5rem] bg-white dark:bg-gray-800
+            <div class="overflow-hidden rounded-[1.5rem] bg-gray-800
                         w-[180px] h-[380px]  md:w-[272px] md:h-[572px]">
-              <img loading="lazy" src={img} class="w-full h-full object-cover dark:block hidden" alt="imagenMobile" />
+              <img loading="lazy" src={img} class="w-full h-full object-cover" alt="imagenMobile" />
             </div>
           </div>
     ))}

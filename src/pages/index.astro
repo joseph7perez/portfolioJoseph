@@ -1,6 +1,5 @@
 ---
 import Badge from '../components/Badge.astro';
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import Linkedin from '../icons/Linkedin.astro';
 import Github from '../icons/Github.astro';
@@ -12,7 +11,6 @@ import Experience from '../components/Experience.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Projects from '../components/Projects.astro';
 import SobreMi from '../components/SobreMi.astro';
-import Contacto from '../components/Contacto.astro';
 import Educacion from '../components/Educacion.astro';
 import Briefcase from '../icons/Briefcase.astro';
 import CodeBranch from '../icons/CodeBranch.astro';
@@ -22,9 +20,6 @@ import File from '../icons/File.astro';
 import Skills from '../components/Skills.astro';
 import Code from '../icons/Code.astro';
 import NavMobile from '../components/NavMobile.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 
 ---
 
@@ -39,7 +34,7 @@ import NavMobile from '../components/NavMobile.astro';
 				rel="noopener"
 				class="flex justify-center items-center"> 
 				 <Badge> Disponible para trabajar </Badge> </a> </h1>
-			<h2 class="text-sm lg:text-xl opacity-80 text-wrap max-w-[700px]">Ingeniero de sistemas y desarrollador de software especializado en FrontEnd con 2 años de experiencia. 
+			<h2 class="text-white text-sm lg:text-xl opacity-80 text-wrap max-w-[700px]">Ingeniero de sistemas y desarrollador de software especializado en FrontEnd con 2 años de experiencia. 
 				Ubicado en Bogotá, Colombia.  </h2>
 			<!-- <h2>Cuento con experiencia en la creación de sitios web funcionales y escalables, 
 				utilizando tecnologías como HTML, CSS, SASS, PHP, JavaScript, TypeScript, .NET, 
@@ -48,34 +43,27 @@ import NavMobile from '../components/NavMobile.astro';
 				<div class="group flex flex-col items-center w-12">
 					<SocialPill href="https://github.com/joseph7perez">
 						<Github class="size-5 lg:size-6 text-white"/>
-
 					</SocialPill>
 					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">GitHub</span>
-
 				</div>
 				
 				<div class="group flex flex-col items-center w-12">
 					<SocialPill href="https://www.linkedin.com/in/joseph-nicolas-p%C3%A9rez-sarmiento-250898244/">
 						<Linkedin class="size-5 lg:size-6 text-white"/>
-
 					</SocialPill>
 					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Linkedin</span>
-
 				</div>
 
 				<div class="group flex flex-col items-center w-12">
 					<SocialPill href="https://www.instagram.com/joseph_perez7/">
 						<Instagram class="size-5 lg:size-6 text-white"/>
-
 					</SocialPill>
 					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Instagram</span>
-
 				</div>
 
 				<div class="group flex flex-col items-center w-12">
 					<SocialPill href="mailto:josephperezsarmiento@hotmail.com">
 						<Email class="size-5 lg:size-6 text-white"/>
-
 					</SocialPill>
 					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Email</span>
 
@@ -84,12 +72,9 @@ import NavMobile from '../components/NavMobile.astro';
 				<div class="group flex flex-col items-center w-12">
 					<SocialPill href="/certificados/HVJosephPerezS.pdf" download >
 						<File class="size-5 lg:size-6 text-white"/>
-
 					</SocialPill>
 					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"> CV</span>
-
 				</div>					
-
 			</nav>
 
 			<a href="#sobre" class="inline-block mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition">
@@ -98,7 +83,7 @@ import NavMobile from '../components/NavMobile.astro';
 		</SectionContainer>
 
 		<SectionContainer id="sobre" class="scroll-mt-34  mb-24 transition-all duration-2500 opacity-0 translate-y-10 reveal ">
-			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+			<h2 class="text-white text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
 				<UserSuit class="size-6"></UserSuit>
 				Sobre mí
 			</h2>
@@ -106,7 +91,7 @@ import NavMobile from '../components/NavMobile.astro';
 		</SectionContainer>
 
 		<SectionContainer id="experience" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
-			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+			<h2 class="text-white text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
 				<Briefcase class="size-6"></Briefcase>
 				Experiencia laboral
 			</h2>
@@ -114,7 +99,7 @@ import NavMobile from '../components/NavMobile.astro';
 		</SectionContainer>
 
 		<SectionContainer id="projects" class="scroll-mt-30 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal" >
-			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+			<h2 class="text-white text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
 				<CodeBranch class="size-6"></CodeBranch>
 				Proyectos
 			</h2>
@@ -124,17 +109,8 @@ import NavMobile from '../components/NavMobile.astro';
 			</div>
 		</SectionContainer>		
 
-		<!-- <SectionContainer id="sobre" class="scroll-mt-24">
-			<h2 class="text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
-				<CodeBranch class="size-6"></CodeBranch>
-				Contacto
-			</h2>
-			<Contacto></Contacto>
-
-		</SectionContainer> -->
-
 		<SectionContainer id="educacion" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
-			<h2 class="text-3xl font-bold mb-3 flex gap-x-3 items-center " >
+			<h2 class="text-white text-3xl font-bold mb-3 flex gap-x-3 items-center " >
 				<UserGraduate class="size-6"></UserGraduate>
 				Educación y Certificados
 			</h2>
@@ -142,7 +118,7 @@ import NavMobile from '../components/NavMobile.astro';
 		</SectionContainer>
 
 			<SectionContainer id="skills" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
-			<h2 class="text-3xl font-bold mb-3 flex gap-x-3 items-center " >
+			<h2 class="text-white text-3xl font-bold mb-3 flex gap-x-3 items-center " >
 				<Code class="size-7"></Code>
 				Herramientas y tecnologías
 			</h2>
