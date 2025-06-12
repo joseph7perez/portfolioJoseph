@@ -1,5 +1,4 @@
 ---
-import NextJS from '../icons/NextJS.astro'
 import Php from '../icons/PHP.astro'
 import Tailwind from '../icons/Tailwind.astro'
 import JavaScript from '../icons/JavaScript.astro'
@@ -8,47 +7,35 @@ import Html from '../icons/Html.astro'
 import MySQL from '../icons/MySQL.astro'
     
     export const tags = {
-        NEXTJS: {
-            name: 'Next.js',
-            icon: NextJS,
-            color: 'text-[#fff]'
-
-        },
         TAILWIND: {
             name: 'Tailwind',
             icon: Tailwind,
             color: 'text-[#39bef7]'
-
         },
         PHP: {
             name: 'PHP',
             icon: Php,
             color: 'text-[#fff]'
-
         },
         JavaScript: {
             name: 'JavaScript',
             icon: JavaScript,
             color: 'text-[#f0da4f]'
-
         },
         Sass: {
             name: 'Sass',
             icon: Sass,
             color: 'text-[#e06ea7]'
-
         },
         Html: {
             name: 'HTML',
             icon: Html,
             color: 'text-[#ff804a]'
-
         },
         MySQL: {
             name: 'MySQL',
             icon: MySQL,
             color: 'text-[#006a87]'
-
         },
     }
 
@@ -112,7 +99,6 @@ import MySQL from '../icons/MySQL.astro'
             ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
             slug: '3'
-
         },
           {
             title: 'DevWebcamp',
@@ -133,9 +119,27 @@ import MySQL from '../icons/MySQL.astro'
             ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
             slug: '4'
-
         },
-       
+        {
+            title: 'BienesRaices',
+            description: 'Sitio web responsive con dashboard en el panel admin para la gestión del CRUD de propiedades y vendedores. Evento sobre desarrollo web, con las conferencias disponibles y su respectiva información (fecha, lugar, ponente y tema), con los paquetes y boletos disponibles. Con un login, creación de cuenta, recuperación de contraseña y confirmación de cuenta.',
+            link: '',
+            github: 'https://github.com/joseph7perez/DevWebcamp',
+            image: '/projects/bienesRaices5.avif',
+            images: [
+                '/projects/bienesRaices5.avif',
+                '/projects/bienesRaices1.avif',
+                '/projects/bienesRaices6.avif',
+                '/projects/bienesRaices7.avif',
+            ],
+            imagesMobile: [
+                  '/projects/bienesRaices2.avif',
+                '/projects/bienesRaices3.avif',
+                '/projects/bienesRaices4.avif',
+            ],
+            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
+            slug: '5'
+        }
     ]
 
     // console.log(projects)
@@ -147,16 +151,6 @@ import MySQL from '../icons/MySQL.astro'
              <article class="flex flex-col items-center text-center p-4">
                 <h3 class="text-2xl font-semibold text-cyan-200 mb-2 ">{project.title}</h3>
                 <p class="text-1xs lg:text-mg mb-4 text-pretty line-clamp-4">{project.description}</p>
-                {/* <ul class="flex gap-x-4 flex-row mb-4">
-                    {project.tags.map(tag => (
-                        <li class="group flex flex-col items-center">
-                            <span class={`flex gap-x-2 rounded-full text-1xs py-1 px-2 items-center font-semibold`}>
-                                <tag.icon class={`size-8  `}></tag.icon>     
-                            </span>
-                            <span class={`text-xs md:text-sm ${tag.color} font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300`}> {tag.name}</span>
-                        </li>
-                    ))}
-                </ul> */}
                 <img 
                 loading="lazy"
                 class="rounded shadow-2xl shadow-cyan-200/20 w-80"
@@ -164,7 +158,6 @@ import MySQL from '../icons/MySQL.astro'
                 alt={`Captura de pantalla  ${project.title}`}
                 class="max-w-7"
                 />
-
             </article>
         </a>
     ))

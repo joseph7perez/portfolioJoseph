@@ -1,0 +1,153 @@
+---
+import Php from '../icons/PHP.astro'
+import Tailwind from '../icons/Tailwind.astro'
+import JavaScript from '../icons/JavaScript.astro'
+import Sass from '../icons/Sass.astro'
+import Html from '../icons/Html.astro'
+import MySQL from '../icons/MySQL.astro'
+import Angular from '../icons/Angular.astro'
+import Python from '../icons/Python.astro'
+import AstroF from '../icons/AstroF.astro'
+import Css from '../icons/Css.astro'
+import TypeScript from '../icons/TypeScript.astro'
+import MongoDB from '../icons/MongoDB.astro'
+import NodeJS from '../icons/NodeJS.astro'
+import Java from '../icons/Java.astro'
+import Express from '../icons/Express.astro'
+import Dart from '../icons/Dart.astro'
+import Git from '../icons/Git.astro'
+import CSharp from '../icons/CSharp.astro'
+import Azure from '../icons/Azure.astro'
+import Swagger from '../icons/Swagger.astro'
+    
+    const technologies = {
+        Html: {
+            name: 'HTML',
+            icon: Html,
+            color: 'text-[#ff804a]'
+        },
+        Css: {
+            name: 'CSS',
+            icon: Css,
+            color: 'text-[#006a87]'
+        },
+        Sass: {
+            name: 'Sass',
+            icon: Sass,
+            color: 'text-[#e06ea7]'
+        }, 
+        TAILWIND: {
+            name: 'Tailwind',
+            icon: Tailwind,
+            color: 'text-[#39bef7]'
+        },
+        JavaScript: {
+            name: 'JavaScript',
+            icon: JavaScript,
+            color: 'text-[#f0da4f]'
+        },
+        TypeScript: {
+            name: 'TypeScript',
+            icon: TypeScript,
+            color: 'text-[#006a87]'
+        },
+        PHP: {
+            name: 'PHP',
+            icon: Php,
+            color: 'text-[#fff]'
+        },        
+        MySQL: {
+            name: 'MySQL',
+            icon: MySQL,
+            color: 'text-[#006a87]'
+        },
+        Angular: {
+            name: 'Angular',
+            icon: Angular,
+            color: 'text-[#006a87]'
+        },
+        Python: {
+            name: 'Python',
+            icon: Python,
+            color: 'text-[#006a87]'
+        },
+        AstroF: {
+            name: 'Astro',
+            icon: AstroF,
+            color: 'text-[#006a87]'
+        },
+        CSharp: {
+            name: 'C#',
+            icon: CSharp,
+            color: 'text-[#006a87]'
+        },
+        
+        MongoDB: {
+            name: 'MongoDB',
+            icon: MongoDB,
+            color: 'text-[#006a87]'
+        },
+        NodeJS: {
+            name: 'NodeJS',
+            icon: NodeJS,
+             color: 'text-[#006a87]'
+        },
+        Java: {
+            name: 'Java',
+            icon: Java,
+            color: 'text-[#006a87]'
+        },
+        Express: {
+            name: 'Express',
+            icon: Express,
+            color: 'text-[#006a87]'
+        },
+        Dart: {
+            name: 'Dart',
+            icon: Dart,
+            color: 'text-[#006a87]'
+        },
+        Git: {
+            name: 'Git',
+            icon: Git,
+            color: 'text-[#006a87]'
+        },
+        
+        Azure: {
+            name: 'Azure',
+            icon: Azure,
+            color: 'text-[#006a87]'
+        },
+        Swagger: {
+            name: 'Swagger',
+            icon: Swagger,
+            color: 'text-[#006a87]'
+        },
+    }
+
+    const techList = Object.values(technologies);
+---
+
+<section class="py-5 ">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <!-- <p class="text-gray-600 dark:text-gray-300 mb-12 text-lg">
+      Estas son algunas de las herramientas que aplico en mis desarrollos.
+    </p> -->
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
+      {techList.map((tech, index) => (
+        <div
+          class={`relative group transition-transform duration-300 ease-in-out transform hover:scale-102 hover:rotate-1 animate-fade-up delay-[${index * 100}ms]`}
+        >
+          <div class="backdrop-blur-md bg-white/30 dark:bg-white/5 border border-gray-200 dark:border-cyan-950 p-5 rounded-2xl shadow-md hover:shadow-xl transition-all">
+            <tech.icon class={`size-10 md:size-12 mx-auto mb-2 transition-transform duration-300 group-hover:rotate-12`} />
+            <p class="text-md font-medium text-gray-800 dark:text-white">
+              {tech.name}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

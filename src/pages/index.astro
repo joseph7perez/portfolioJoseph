@@ -19,6 +19,9 @@ import CodeBranch from '../icons/CodeBranch.astro';
 import UserSuit from '../icons/UserSuit.astro';
 import UserGraduate from '../icons/UserGraduate.astro';
 import File from '../icons/File.astro';
+import Skills from '../components/Skills.astro';
+import Code from '../icons/Code.astro';
+import NavMobile from '../components/NavMobile.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -136,8 +139,18 @@ import File from '../icons/File.astro';
 				Educación y Certificados
 			</h2>
 			<Educacion></Educacion>
+		</SectionContainer>
+
+			<SectionContainer id="skills" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
+			<h2 class="text-3xl font-bold mb-3 flex gap-x-3 items-center " >
+				<Code class="size-7"></Code>
+				Herramientas y tecnologías
+			</h2>
+			<Skills></Skills>
 
 		</SectionContainer>
+
+		<NavMobile></NavMobile>
 	</main>
 </Layout>
 

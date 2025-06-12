@@ -1,0 +1,62 @@
+---
+import UserSuit from "../icons/UserSuit.astro"
+import Briefcase from "../icons/Briefcase.astro"
+import CodeBranch from "../icons/CodeBranch.astro"
+import UserGraduate from "../icons/UserGraduate.astro"
+import Code from "../icons/Code.astro"
+---
+
+<div class="fixed md:hidden z-50 w-full h-15 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-3 left-1/2 dark:bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:border-gray-600 ">
+    <div class="grid h-full max-w-lg grid-cols-6 mx-auto">
+        <a href="#top" data-tooltip-target="tooltip-home" type="button" class="inline-flex flex-col items-center justify-center px-3 md:px-5 rounded-s-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="size-4 md:size-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-cyan-800 dark:group-hover:text-cyan-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+            </svg>
+            <span class="sr-only">Home</span>
+        </a>
+        <div id="tooltip-home" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+            Home
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <a href="#sobre" data-tooltip-target="tooltip-wallet" type="button" class="inline-flex flex-col items-center justify-center px-3 md:px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <UserSuit class="size-4 md:size-5  text-gray-500 dark:text-gray-400 group-hover:text-cyan-800 dark:group-hover:text-cyan-700"></UserSuit>
+            <span class="sr-only">Sobre Mi</span>
+        </a>
+        <div id="tooltip-wallet" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+            Sobre Mi
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <a href="#experience" data-tooltip-target="tooltip-settings" type="button" class="inline-flex flex-col items-center justify-center px-3 md:px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <Briefcase class="size-4 md:size-5 text-gray-500 dark:text-gray-400 group-hover:text-cyan-800 dark:group-hover:text-cyan-700"></Briefcase>
+            <span class="sr-only">Experiencia</span>
+        </a>
+        <div id="tooltip-settings" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+            Experiencia
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <a href="#projects" data-tooltip-target="tooltip-profile" type="button" class="inline-flex flex-col items-center justify-center px-3 md:px-5  hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <CodeBranch class="size-4 md:size-5 text-gray-500 dark:text-gray-400 group-hover:text-cyan-800 dark:group-hover:text-cyan-700"></CodeBranch>
+            <span class="sr-only">Proyectos</span>
+        </a>
+        <div id="tooltip-profile" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+            Proyectos
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <a href="#educacion" data-tooltip-target="tooltip-profile" type="button" class="inline-flex flex-col items-center justify-center px-3 md:px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <UserGraduate class="size-4 md:size-5 text-gray-500 dark:text-gray-400 group-hover:text-cyan-800 dark:group-hover:text-cyan-700"></UserGraduate>
+            <span class="sr-only">Educación</span>
+        </a>
+        <div id="tooltip-profile" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+            Educación
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+         <a href="#skills" data-tooltip-target="tooltip-profile" type="button" class="inline-flex flex-col items-center justify-center px-3 md:px-5 rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <Code class="size-4 md:size-5 text-gray-500 dark:text-gray-400 group-hover:text-cyan-800 dark:group-hover:text-cyan-700"></C>
+            <span class="sr-only">Herramientas</span>
+        </a>
+        <div id="tooltip-profile" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+            Herramientas
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+</div>
