@@ -147,7 +147,9 @@ import MySQL from '../icons/MySQL.astro'
 
 {
     projects.map(project => (
-        <a href={`/projects/${project.slug}`} class="hover:scale-101 hover:bg-white/5 transition  ">
+        <a href={`/projects/${project.slug}`} 
+        class="hover:scale-101 hover:bg-white/5 transition" 
+        onclick="sessionStorage.setItem('scrollY', window.scrollY)">
              <article class="flex flex-col items-center text-center p-4">
                 <h3 class="text-2xl font-semibold text-cyan-200 mb-2 ">{project.title}</h3>
                 <p class="text-gray-200 text-1xs lg:text-mg mb-4 text-pretty line-clamp-4">{project.description}</p>
