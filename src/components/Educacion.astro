@@ -11,20 +11,40 @@ const educacion = [
 const certificados = [
     {
         instituto: 'Udemy',
-        date: 'Feb 2025',
-        titulo: 'Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL',
-        imagen: '',
-        archivo: '/certificados/CertificadoDesarrolloWebCompleto.pdf'
+        date: 'En curso',
+        titulo: 'Full Stack Node.js React TS NestJS Next.js Creando Proyectos',
+        archivo: ''
     },
     {
         instituto: 'Udemy',
         date: 'May 2025',
         titulo: 'Master en JavaScript 2025: Aprender JS, Angular, Node, Astro',
-        imagen: '/certificados/certificadoMasterJS.avif',
         archivo: '/certificados/certificadoMasterJS.pdf'
-
-    }
+    },
+    {
+        instituto: 'Udemy',
+        date: 'Feb 2025',
+        titulo: 'Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL',
+        archivo: '/certificados/CertificadoDesarrolloWebCompleto.pdf'
+    },
+ 
 ];
+
+const idiomas = [
+  {
+        instituto: 'Academia de idiomas Smart',
+        date: 'Feb 2025 - A la fecha',
+        titulo: 'Inglés',
+        archivo: ''
+  },
+  // {
+  //       instituto: 'Academia de idiomas Smart',
+  //       date: 'Feb 2025 - A la fecha',
+  //       titulo: 'Inglés',
+  //       archivo: '/certificados/CertificadoDesarrolloWebCompleto.pdf'
+  // }
+
+]
 
 ---
 <section id="educacion" class="scroll-mt-24 py-2 bg-neutral-950 text-cyan-100">
@@ -53,21 +73,64 @@ const certificados = [
             <div class="group flex flex-col justify-center content-center "
                 // onclick={`document.getElementById('modal-${i}').showModal()`}
             >
+              {
+                certificado.archivo && (
+                  <a
+                    href={certificado.archivo}
+                    download 
+                    class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
+                  >
+                      <p class="text-sm md:text-1lg font-semibold">{certificado.titulo}</p>
+                      <p class="text-xs md:text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
+                  </a>
 
-               <a
-                  href={certificado.archivo}
-                  download 
-                  class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
-                >
-                    <p class="text-sm md:text-1lg font-semibold">{certificado.titulo}</p>
-                    <p class="text-xs md:text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
-                </a>
-
-                <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Descargar</span>
-
+                  <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Descargar</span>
+                ) || (
+                  <a 
+                    class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition mb-6"
+                  >
+                      <p class="text-sm md:text-1lg font-semibold">{certificado.titulo}</p>
+                      <p class="text-xs md:text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
+                  </a>
+                )               
+              }
+              
             </div>
           ))
         }
-    </div>
 
+       <!-- Idiomas -->
+
+      <h2 class="text-2xl font-bold mb-2 mt-5 text-cyan-200">Idiomas</h2>
+
+          {
+            idiomas.map((idioma, i) => (
+              <div class="group flex flex-col justify-center content-center ">
+
+              {
+                  idioma.archivo && (
+                    <a 
+                      class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
+                      href={idioma.archivo}
+                      download 
+                    >
+                        <p class="text-sm md:text-1lg font-semibold">{idioma.titulo}</p>
+                        <p class="text-xs md:text-sm text-cyan-300">{idioma.instituto} · {idioma.date}</p>
+                    </a>
+
+                    <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Descargar</span>
+
+                  ) || (
+                      <a 
+                        class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
+                      >
+                          <p class="text-sm md:text-1lg font-semibold">{idioma.titulo}</p>
+                          <p class="text-xs md:text-sm text-cyan-300">{idioma.instituto} · {idioma.date}</p>
+                      </a>
+                  )
+              }
+              </div>     
+            ))
+          }  
+    </div>
 </section>
