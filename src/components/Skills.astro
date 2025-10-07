@@ -19,113 +19,128 @@ import Git from '../icons/Git.astro'
 import CSharp from '../icons/CSharp.astro'
 import Azure from '../icons/Azure.astro'
 import Swagger from '../icons/Swagger.astro'
+import React from '../icons/React.astro'
+import PostgreSQL from '../icons/PostgreSQL.astro'
+import Github from '../icons/Github.astro'
     
-    const technologies = {
-        Html: {
+    const technologies = [
+        {
             name: 'HTML',
             icon: Html,
             color: 'text-[#ff804a]'
         },
-        Css: {
+        {
             name: 'CSS',
             icon: Css,
             color: 'text-[#006a87]'
         },
-        Sass: {
+        {
             name: 'Sass',
             icon: Sass,
             color: 'text-[#e06ea7]'
         }, 
-        TAILWIND: {
-            name: 'Tailwind',
+        {
+            name: 'TailwindCSS',
             icon: Tailwind,
             color: 'text-[#39bef7]'
         },
-        JavaScript: {
+        {
             name: 'JavaScript',
             icon: JavaScript,
             color: 'text-[#f0da4f]'
         },
-        TypeScript: {
+        {
             name: 'TypeScript',
             icon: TypeScript,
             color: 'text-[#006a87]'
         },
-        PHP: {
-            name: 'PHP',
-            icon: Php,
-            color: 'text-[#fff]'
-        },        
-        MySQL: {
-            name: 'MySQL',
-            icon: MySQL,
-            color: 'text-[#006a87]'
-        },
-        Angular: {
-            name: 'Angular',
-            icon: Angular,
-            color: 'text-[#006a87]'
-        },
-        Python: {
-            name: 'Python',
-            icon: Python,
-            color: 'text-[#006a87]'
-        },
-        AstroF: {
-            name: 'Astro',
-            icon: AstroF,
-            color: 'text-[#006a87]'
-        },
-        CSharp: {
-            name: 'C#',
-            icon: CSharp,
-            color: 'text-[#006a87]'
-        },
-        
-        MongoDB: {
-            name: 'MongoDB',
-            icon: MongoDB,
-            color: 'text-[#006a87]'
-        },
-        NodeJS: {
+        {
             name: 'NodeJS',
             icon: NodeJS,
              color: 'text-[#006a87]'
         },
-        Java: {
+        {
+            name: 'PHP',
+            icon: Php,
+            color: 'text-[#fff]'
+        },    
+        {
+            name: 'C#',
+            icon: CSharp,
+            color: 'text-[#006a87]'
+        }, 
+        {
+            name: 'Python',
+            icon: Python,
+            color: 'text-[#006a87]'
+        },  
+        {
             name: 'Java',
             icon: Java,
             color: 'text-[#006a87]'
+        }, 
+        {
+            name: 'React',
+            icon: React,
+            color: 'text-[#006a87]'
         },
-        Express: {
+        {
+            name: 'Angular',
+            icon: Angular,
+            color: 'text-[#006a87]'
+        },
+        {
+            name: 'Astro',
+            icon: AstroF,
+            color: 'text-[#006a87]'
+        },  
+        {
             name: 'Express',
             icon: Express,
             color: 'text-[#006a87]'
+        },      
+        {
+            name: 'MongoDB',
+            icon: MongoDB,
+            color: 'text-[#006a87]'
         },
-        Dart: {
+        {
+            name: 'MySQL',
+            icon: MySQL,
+            color: 'text-[#006a87]'
+        },
+        {
+            name: 'PostgreSQL',
+            icon: PostgreSQL,
+            color: 'text-[#006a87]'
+        },
+        {
             name: 'Dart',
             icon: Dart,
             color: 'text-[#006a87]'
         },
-        Git: {
+        {
             name: 'Git',
             icon: Git,
             color: 'text-[#006a87]'
         },
-        
-        Azure: {
+        {
+            name: 'Github',
+            icon: Github,
+            color: 'text-[#006a87]'
+        },
+        {
             name: 'Azure',
             icon: Azure,
             color: 'text-[#006a87]'
         },
-        Swagger: {
+        {
             name: 'Swagger',
             icon: Swagger,
             color: 'text-[#006a87]'
         },
-    }
+    ]        
 
-    const techList = Object.values(technologies);
 ---
 
 <section class="py-5 ">
@@ -135,9 +150,9 @@ import Swagger from '../icons/Swagger.astro'
     </p> -->
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
-      {techList.map((tech, index) => (
+      {technologies.map(tech => (
         <div
-          class={`relative group transition-transform duration-300 ease-in-out transform hover:scale-102 hover:rotate-1 animate-fade-up delay-[${index * 100}ms]`}
+          class={`relative group transition-transform duration-300 ease-in-out transform hover:scale-102 hover:rotate-1 animate-fade-up`}
         >
           <div class="backdrop-blur-md bg-white/5 border border-cyan-950 p-5 rounded-2xl shadow-md hover:shadow-xl transition-all">
             <tech.icon class={`size-10 md:size-12 mx-auto mb-2 transition-transform duration-300 group-hover:rotate-12`} />
