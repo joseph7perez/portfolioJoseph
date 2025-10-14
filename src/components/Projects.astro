@@ -5,6 +5,11 @@ import JavaScript from '../icons/JavaScript.astro'
 import Sass from '../icons/Sass.astro'
 import Html from '../icons/Html.astro'
 import MySQL from '../icons/MySQL.astro'
+import React from '../icons/React.astro'
+import TypeScript from '../icons/TypeScript.astro'
+import Express from '../icons/Express.astro'
+import NodeJS from '../icons/NodeJS.astro'
+import MongoDB from '../icons/MongoDB.astro'
     
     export const tags = {
         TAILWIND: {
@@ -37,54 +42,64 @@ import MySQL from '../icons/MySQL.astro'
             icon: MySQL,
             color: 'text-[#006a87]'
         },
+         React: {
+            name: 'React',
+            icon: React,
+            color: 'text-[#58c3db]'
+        },
+         TypeScript: {
+            name: 'TypeScript',
+            icon: TypeScript,
+            color: 'text-[#327ac7]'
+        },
+         Express: {
+            name: 'Express',
+            icon: Express,
+            color: 'text-[#ffffff]'
+        },
+         NodeJS: {
+            name: 'NodeJS',
+            icon: NodeJS,
+            color: 'text-[#62b347]'
+        },
+        MongoDB: {
+            name: 'MongoDB',
+            icon: MongoDB,
+            color: 'text-[#00ed63]'
+        },
     }
 
     export const projects = [ 
         {
-            title: 'TecnhoFestival',
-            description: 'Este proyecto está diseñado para capturar la energía y la esencia de un festival de música electrónica. En la sección principal, un video en bucle de un DJ en vivo da la bienvenida a los visitantes. El sitio incluye un Line Up, donde se destacan los artistas y horarios de presentación. También cuenta con una galería de imágenes dinámica, que permite hacer clic sobre cada foto para verla en pantalla completa. Finalmente, los usuarios pueden acceder fácilmente a la sección de boletos disponibles, donde pueden consultar precios y lo que incluye.',
-            link: 'https://technofestivaljoseph.netlify.app/',
-            github: 'https://github.com/joseph7perez/technofestival',
-            image: '/projects/tecnoFestival5.avif',
+            title: 'DevTree',
+            description: 'Este proyecto es un clon de LinkTree, en donde los usuarios crean una cuenta y pueden agregar información acerca de lo que hacen, añadiendo enlaces de sus redes sociales. Y por último pueden compartir el enlace de su perfil para que las demás personas los puedan ver sus redes sociales e información.',
+            link: 'https://devtree-joseph-perez.vercel.app/',
+            github: [
+                { name: 'frontend', url:'https://github.com/joseph7perez/DevTree_frontend' },
+                { name: 'backend', url:'https://github.com/joseph7perez/Devtree_backend' },
+            ],
+            image: '/projects/DevTree2.avif',
             images: [
-                '/projects/tecnoFestival5.avif',
-                '/projects/tecnoFestival4.avif',
-                '/projects/tecnoFestival3.avif',
-                '/projects/tecnoFestival6.avif',
+                '/projects/DevTree2.avif',
+                '/projects/DevTree3.avif',
+                '/projects/DevTree4.avif',    
+                '/projects/DevTree5.avif',
             ],
             imagesMobile: [
-                '/projects/tecnoFestival1.avif',
-                '/projects/tecnoFestival2.avif',
-                '/projects/tecnoFestival7.avif',
+                // '/projects/tecnoFestival1.avif',
+                // '/projects/tecnoFestival2.avif',
+                // '/projects/tecnoFestival7.avif',
             ],
-            tags: [tags.Html ,tags.Sass ,tags.JavaScript],
+            tags: [tags.Html, tags.TAILWIND, tags.React, tags.TypeScript, tags.Express, tags.NodeJS, tags.MongoDB],
             slug: '1'
         },
-        {
-            title: 'UpTask',
-            description: 'Sitio web dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes. Con CRUD de los proyectos y de las tareas',
-            link: '',
-            github: 'https://github.com/joseph7perez/UpTask',
-            image: '/projects/Uptask2.avif',
-            images: [
-                '/projects/Uptask2.avif',
-                '/projects/Uptask3.avif',
-                '/projects/Uptask5.avif',
-                '/projects/Uptask6.avif',
-            ],
-            imagesMobile: [
-                '/projects/Uptask1.avif',
-                '/projects/Uptask4.avif',
-                '/projects/Uptask7.avif',
-            ],
-            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '2'
-        },
-          {
+         {
             title: 'BarberShop',
             description: 'Sitio web responsive para el agendamiento y reservas de citas para una barbería, en donde el cliente podrá escoger el o los servicios que desea, elegir la fecha y hora, finalmente podrá ver el resumen de su cita. El sitio web cuenta con panel de administrador para la gestión del CRUD de los servicios ofrecidos por la barbería y en donde también podrá visualizar las citas asignadas en el día seleccionado.',
             link: '',
-            github: 'https://github.com/joseph7perez/barberShop',
+            github: [
+                { name: 'repositorio', url: 'https://github.com/joseph7perez/barberShop' }
+            ],
             image: '/projects/barberShop1.avif',
               images: [
                 '/projects/barberShop1.avif',
@@ -98,13 +113,60 @@ import MySQL from '../icons/MySQL.astro'
                 '/projects/barberShop7.avif',
             ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
+            slug: '2'
+        },
+        {
+            title: 'TecnhoFestival',
+            description: 'Este proyecto está diseñado para capturar la energía y la esencia de un festival de música electrónica. En la sección principal, un video en bucle de un DJ en vivo da la bienvenida a los visitantes. El sitio incluye un Line Up, donde se destacan los artistas y horarios de presentación. También cuenta con una galería de imágenes dinámica, que permite hacer clic sobre cada foto para verla en pantalla completa. Finalmente, los usuarios pueden acceder fácilmente a la sección de boletos disponibles, donde pueden consultar precios y lo que incluye.',
+            link: 'https://technofestivaljoseph.netlify.app/',
+            github: [
+                { name: 'repositorio', url: 'https://github.com/joseph7perez/technofestival' }
+            ],
+            image: '/projects/tecnoFestival5.avif',
+            images: [
+                '/projects/tecnoFestival5.avif',
+                '/projects/tecnoFestival4.avif',
+                '/projects/tecnoFestival3.avif',
+                '/projects/tecnoFestival6.avif',
+            ],
+            imagesMobile: [
+                '/projects/tecnoFestival1.avif',
+                '/projects/tecnoFestival2.avif',
+                '/projects/tecnoFestival7.avif',
+            ],
+            tags: [tags.Html ,tags.Sass ,tags.JavaScript],
             slug: '3'
         },
+        {
+            title: 'UpTask',
+            description: 'Sitio web dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes. Con CRUD de los proyectos y de las tareas',
+            link: '',
+            github: [
+                { name: 'repositorio', url: 'https://github.com/joseph7perez/UpTask'}
+            ],
+            image: '/projects/Uptask2.avif',
+            images: [
+                '/projects/Uptask2.avif',
+                '/projects/Uptask3.avif',
+                '/projects/Uptask5.avif',
+                '/projects/Uptask6.avif',
+            ],
+            imagesMobile: [
+                '/projects/Uptask1.avif',
+                '/projects/Uptask4.avif',
+                '/projects/Uptask7.avif',
+            ],
+            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
+            slug: '4'
+        },
+       
           {
             title: 'DevWebcamp',
             description: 'Sitio web responsive con dashboard en el panel admin para la gestión del CRUD de ponentes, eventos, registrados y regalos. Evento sobre desarrollo web, con las conferencias disponibles y su respectiva información (fecha, lugar, ponente y tema), con los paquetes y boletos disponibles. Con un login, creación de cuenta, recuperación de contraseña y confirmación de cuenta.',
             link: '',
-            github: 'https://github.com/joseph7perez/DevWebcamp',
+            github: [
+                { name: 'repositorio', url: 'https://github.com/joseph7perez/DevWebcamp' }
+            ],
             image: '/projects/DevWebcamp7.avif',
             images: [
                 '/projects/DevWebcamp1.avif',
@@ -118,13 +180,15 @@ import MySQL from '../icons/MySQL.astro'
                 '/projects/DevWebcamp6.avif',
             ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '4'
+            slug: '5'
         },
         {
             title: 'BienesRaices',
             description: 'Sitio web responsive con login para ingresar al dashboard del panel de administrador para la gestión del CRUD de propiedades y vendedores. Los usuarios podrán ver información sobre la venta de propiedades y viviendas, navegar por un blog y conocer sobre las empresa.',
             link: '',
-            github: 'https://github.com/joseph7perez/bienesraices',
+            github: [
+                { name: 'repositorio', url: 'https://github.com/joseph7perez/bienesraices'}
+            ],
             image: '/projects/bienesRaices5.avif',
             images: [
                 '/projects/bienesRaices5.avif',
@@ -138,7 +202,7 @@ import MySQL from '../icons/MySQL.astro'
                 '/projects/bienesRaices4.avif',
             ],
             tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '5'
+            slug: '6'
         }
     ]
 
