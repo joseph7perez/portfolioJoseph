@@ -6,9 +6,9 @@ const { tags } = Astro.props;
 ---
   
   
-  <ul class="flex gap-x-4 flex-row mb-4 justify-around">
-    {tags.map((tag: { icon: any; color: any; name: unknown; }) => (
-        <li class="group flex flex-col items-center">
+  <ul class=" gap-x-4 mb-4 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-7  justify-around">
+    {tags.map((tag: { icon: any; color: string; name: string; }) => (
+        <li class="group flex flex-col items-center ">
             <span class={`flex gap-x-2 rounded-full text-1xs py-1 px-2 items-center font-semibold`}>
                 <tag.icon class={`size-8 sm:size-12 md:size-15`}></tag.icon>     
             </span>
