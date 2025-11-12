@@ -1,12 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Projects from '../../components/Projects.astro';
-import { projects } from '../../components/Projects.astro';
-import ProjectGallery from '../../components/ProjectGallery.astro';
+import Projects from '../../components/sections/Projects.astro';
+import { projects } from '../../components/sections/Projects.astro';
+import ProjectGallery from '../../components/projects/ProjectGallery.astro';
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import Github from '../../icons/Github.astro';
-import Tecnologias from '../../components/Tecnologias.astro';
+import Tecnologias from '../../components/ui/Tecnologias.astro';
 
 
 export async function getStaticPaths () {
