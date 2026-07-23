@@ -1,228 +1,27 @@
 ---
-import Php from '../../icons/technologies/PHP.astro'
-import Tailwind from '../../icons/technologies/Tailwind.astro'
-import JavaScript from '../../icons/technologies/JavaScript.astro'
-import Sass from '../../icons/technologies/Sass.astro'
-import Html from '../../icons/technologies/Html.astro'
-import MySQL from '../../icons/technologies/MySQL.astro'
-import React from '../../icons/technologies/React.astro'
-import TypeScript from '../../icons/technologies/TypeScript.astro'
-import Express from '../../icons/technologies/Express.astro'
-import NodeJS from '../../icons/technologies/NodeJS.astro'
-import MongoDB from '../../icons/technologies/MongoDB.astro'
-    
-    export const tags = {
-        TAILWIND: {
-            name: 'Tailwind',
-            icon: Tailwind,
-            color: 'text-[#39bef7]'
-        },
-        PHP: {
-            name: 'PHP',
-            icon: Php,
-            color: 'text-[#fff]'
-        },
-        JavaScript: {
-            name: 'JavaScript',
-            icon: JavaScript,
-            color: 'text-[#f0da4f]'
-        },
-        Sass: {
-            name: 'Sass',
-            icon: Sass,
-            color: 'text-[#e06ea7]'
-        },
-        Html: {
-            name: 'HTML',
-            icon: Html,
-            color: 'text-[#ff804a]'
-        },
-        MySQL: {
-            name: 'MySQL',
-            icon: MySQL,
-            color: 'text-[#006a87]'
-        },
-         React: {
-            name: 'React',
-            icon: React,
-            color: 'text-[#58c3db]'
-        },
-         TypeScript: {
-            name: 'TypeScript',
-            icon: TypeScript,
-            color: 'text-[#327ac7]'
-        },
-         Express: {
-            name: 'Express',
-            icon: Express,
-            color: 'text-[#ffffff]'
-        },
-         NodeJS: {
-            name: 'NodeJS',
-            icon: NodeJS,
-            color: 'text-[#62b347]'
-        },
-        MongoDB: {
-            name: 'MongoDB',
-            icon: MongoDB,
-            color: 'text-[#00ed63]'
-        },
-    }
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
-    export const projects = [ 
-        {
-            title: 'DevTree',
-            description: 'Este proyecto es un clon de LinkTree, en donde los usuarios crean una cuenta y pueden agregar información acerca de lo que hacen, añadiendo enlaces de sus redes sociales. Y por último pueden compartir el enlace de su perfil para que las demás personas los puedan ver sus redes sociales e información.',
-            link: 'https://devtree-joseph-perez.vercel.app/',
-            github: [
-                { name: 'frontend', url:'https://github.com/joseph7perez/DevTree_frontend' },
-                { name: 'backend', url:'https://github.com/joseph7perez/Devtree_backend' },
-            ],
-            image: '/projects/DevTree2.avif',
-            images: [
-                '/projects/DevTree2.avif',
-                '/projects/DevTree3.avif',
-                '/projects/DevTree4.avif',    
-                '/projects/DevTree5.avif',
-            ],
-            imagesMobile: [
-                '/projects/DevTree6.avif',
-                '/projects/DevTree7.avif',
-                '/projects/DevTree8.avif',
-            ],
-            tags: [tags.Html, tags.TAILWIND, tags.React, tags.TypeScript, tags.Express, tags.NodeJS, tags.MongoDB],
-            slug: '1'
-        },
-         {
-            title: 'BarberShop',
-            description: 'Sitio web responsive para el agendamiento y reservas de citas para una barbería, en donde el cliente podrá escoger el o los servicios que desea, elegir la fecha y hora, finalmente podrá ver el resumen de su cita. El sitio web cuenta con panel de administrador para la gestión del CRUD de los servicios ofrecidos por la barbería y en donde también podrá visualizar las citas asignadas en el día seleccionado.',
-            link: '',
-            github: [
-                { name: 'repositorio', url: 'https://github.com/joseph7perez/barberShop' }
-            ],
-            image: '/projects/barberShop1.avif',
-              images: [
-                '/projects/barberShop1.avif',
-                '/projects/barberShop2.avif',
-                '/projects/barberShop3.avif',
-                '/projects/barberShop4.avif',
-            ],
-            imagesMobile: [
-                '/projects/barberShop5.avif',
-                '/projects/barberShop6.avif',
-                '/projects/barberShop7.avif',
-            ],
-            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '2'
-        },
-        {
-            title: 'TecnhoFestival',
-            description: 'Este proyecto está diseñado para capturar la energía y la esencia de un festival de música electrónica. En la sección principal, un video en bucle de un DJ en vivo da la bienvenida a los visitantes. El sitio incluye un Line Up, donde se destacan los artistas y horarios de presentación. También cuenta con una galería de imágenes dinámica, que permite hacer clic sobre cada foto para verla en pantalla completa. Finalmente, los usuarios pueden acceder fácilmente a la sección de boletos disponibles, donde pueden consultar precios y lo que incluye.',
-            link: 'https://technofestivaljoseph.netlify.app/',
-            github: [
-                { name: 'repositorio', url: 'https://github.com/joseph7perez/technofestival' }
-            ],
-            image: '/projects/tecnoFestival5.avif',
-            images: [
-                '/projects/tecnoFestival5.avif',
-                '/projects/tecnoFestival4.avif',
-                '/projects/tecnoFestival3.avif',
-                '/projects/tecnoFestival6.avif',
-            ],
-            imagesMobile: [
-                '/projects/tecnoFestival1.avif',
-                '/projects/tecnoFestival2.avif',
-                '/projects/tecnoFestival7.avif',
-            ],
-            tags: [tags.Html ,tags.Sass ,tags.JavaScript],
-            slug: '3'
-        },
-        {
-            title: 'UpTask',
-            description: 'Sitio web dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes. Con CRUD de los proyectos y de las tareas',
-            link: '',
-            github: [
-                { name: 'repositorio', url: 'https://github.com/joseph7perez/UpTask'}
-            ],
-            image: '/projects/Uptask2.avif',
-            images: [
-                '/projects/Uptask2.avif',
-                '/projects/Uptask3.avif',
-                '/projects/Uptask5.avif',
-                '/projects/Uptask6.avif',
-            ],
-            imagesMobile: [
-                '/projects/Uptask1.avif',
-                '/projects/Uptask4.avif',
-                '/projects/Uptask7.avif',
-            ],
-            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '4'
-        },
-       
-          {
-            title: 'DevWebcamp',
-            description: 'Sitio web responsive con dashboard en el panel admin para la gestión del CRUD de ponentes, eventos, registrados y regalos. Evento sobre desarrollo web, con las conferencias disponibles y su respectiva información (fecha, lugar, ponente y tema), con los paquetes y boletos disponibles. Con un login, creación de cuenta, recuperación de contraseña y confirmación de cuenta.',
-            link: '',
-            github: [
-                { name: 'repositorio', url: 'https://github.com/joseph7perez/DevWebcamp' }
-            ],
-            image: '/projects/DevWebcamp7.avif',
-            images: [
-                '/projects/DevWebcamp1.avif',
-                '/projects/DevWebcamp2.avif',
-                '/projects/DevWebcamp3.avif',
-                '/projects/DevWebcamp7.avif',
-            ],
-            imagesMobile: [
-                '/projects/DevWebcamp5.avif',
-                '/projects/DevWebcamp4.avif',
-                '/projects/DevWebcamp6.avif',
-            ],
-            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '5'
-        },
-        {
-            title: 'BienesRaices',
-            description: 'Sitio web responsive con login para ingresar al dashboard del panel de administrador para la gestión del CRUD de propiedades y vendedores. Los usuarios podrán ver información sobre la venta de propiedades y viviendas, navegar por un blog y conocer sobre las empresa.',
-            link: '',
-            github: [
-                { name: 'repositorio', url: 'https://github.com/joseph7perez/bienesraices'}
-            ],
-            image: '/projects/bienesRaices5.avif',
-            images: [
-                '/projects/bienesRaices5.avif',
-                '/projects/bienesRaices1.avif',
-                '/projects/bienesRaices6.avif',
-                '/projects/bienesRaices7.avif',
-            ],
-            imagesMobile: [
-                '/projects/bienesRaices2.avif',
-                '/projects/bienesRaices3.avif',
-                '/projects/bienesRaices4.avif',
-            ],
-            tags: [tags.Html, tags.PHP, tags.JavaScript, tags.Sass, tags.MySQL],
-            slug: '6'
-        }
-    ]
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-    // console.log(projects)
+const projects = await getCollection('projects');
 ---
 
 {
-    projects.map(project => (
-        <a href={`/projects/${project.slug}`} 
-        class="hover:scale-101 hover:bg-white/5 transition" 
+    projects.map(({ data: project }) => (
+        <a href={getRelativeLocaleUrl(lang, `/projects/${project.slug}`)}
+        class="hover:scale-101 hover:bg-white/5 transition"
         onclick="sessionStorage.setItem('scrollY', window.scrollY)">
              <article class="flex flex-col items-center text-center p-4">
                 <h3 class="text-2xl font-semibold text-cyan-200 mb-2 ">{project.title}</h3>
-                <p class="text-gray-200 text-1xs lg:text-mg mb-4 text-pretty line-clamp-4">{project.description}</p>
-                <img 
-                loading="lazy"
-                class="rounded shadow-2xl shadow-cyan-200/20 w-80"
-                src={project.image} 
-                alt={`Captura de pantalla  ${project.title}`}
-                class="max-w-7"
+                <p class="text-gray-200 lg:text-base mb-4 text-pretty line-clamp-4">{project.description[lang]}</p>
+                <img
+                    loading="lazy"
+                    class="rounded shadow-2xl shadow-cyan-200/20 w-80"
+                    src={project.image}
+                    alt={`${t('projects.screenshotAlt')} ${project.title}`}
                 />
             </article>
         </a>
