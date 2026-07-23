@@ -1,0 +1,149 @@
+---
+import Badge from '../../components/ui/Badge.astro';
+import Layout from '../../layouts/Layout.astro';
+import Linkedin from '../../icons/social/Linkedin.astro';
+import Github from '../../icons/social/Github.astro';
+import Instagram from '../../icons/social/Instagram.astro';
+import Email from '../../icons/social/Email.astro';
+import SocialPill from '../../components/ui/SocialPill.astro';
+import Experience from '../../components/sections/Experience.astro';
+import SectionContainer from '../../components/layout/SectionContainer.astro';
+import Projects from '../../components/sections/Projects.astro';
+import SobreMi from '../../components/sections/SobreMi.astro';
+import Educacion from '../../components/sections/Educacion.astro';
+import Briefcase from '../../icons/ui/Briefcase.astro';
+import CodeBranch from '../../icons/ui/CodeBranch.astro';
+import UserSuit from '../../icons/ui/UserSuit.astro';
+import UserGraduate from '../../icons/ui/UserGraduate.astro';
+import File from '../../icons/ui/File.astro';
+import Skills from '../../components/sections/Skills.astro';
+import Code from '../../icons/ui/Code.astro';
+import NavMobile from '../../components/layout/NavMobile.astro';
+
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('meta.title')} description={t('meta.description')}>
+	<main>
+		<SectionContainer id="top" class="h-screen flex flex-col items-center justify-center">
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-3 pb-5 lg:pb-8">
+				{t('hero.greeting')}
+				<a 
+				href="https://www.linkedin.com/in/joseph-nicolas-p%C3%A9rez-sarmiento-250898244/"
+				target="_blank"
+				rel="noopener"
+				class="flex justify-center items-center"> 
+				 <Badge> {t('hero.badge')} </Badge> </a> </h1>
+			<h2 class="text-white text-sm lg:text-xl opacity-80 text-wrap max-w-[700px]">{t('hero.subtitle')}</h2>
+			<nav class="flex gap-5 justify-center mt-5">
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="https://github.com/joseph7perez">
+						<Github class="size-5 lg:size-6 text-white"/>
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">GitHub</span>
+				</div>
+				
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="https://www.linkedin.com/in/joseph-nicolas-p%C3%A9rez-sarmiento-250898244/">
+						<Linkedin class="size-5 lg:size-6 text-white"/>
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">LinkedIn</span>
+				</div>
+
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="https://www.instagram.com/joseph_perez7/">
+						<Instagram class="size-5 lg:size-6 text-white"/>
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Instagram</span>
+				</div>
+
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href="mailto:josephperezsarmiento@hotmail.com">
+						<Email class="size-5 lg:size-6 text-white"/>
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Email</span>
+
+				</div>
+
+				<div class="group flex flex-col items-center w-12">
+					<SocialPill href={t('cv.href')} download={t('cv.filename')}>
+						<File class="size-5 lg:size-6 text-white"/>
+					</SocialPill>
+					<span class="mt-2 text-xs md:text-sm text-cyan-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"> CV</span>
+				</div>					
+			</nav>
+
+			<a href="#sobre" class="inline-block mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition">
+				{t('hero.cta')}
+			</a>
+		</SectionContainer>
+
+		<SectionContainer id="sobre" class="scroll-mt-34  mb-24 transition-all duration-2500 opacity-0 translate-y-10 reveal ">
+			<h2 class="text-white text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<UserSuit class="size-6"></UserSuit>
+				{t('section.about')}
+			</h2>
+			<SobreMi></SobreMi>
+		</SectionContainer>
+
+		<SectionContainer id="experience" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
+			<h2 class="text-white text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<Briefcase class="size-6"></Briefcase>
+				{t('section.experience')}
+			</h2>
+			<Experience></Experience>
+		</SectionContainer>
+
+		<SectionContainer id="projects" class="scroll-mt-30 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal" >
+			<h2 class="text-white text-3xl font-semibold mb-3 flex gap-x-3 items-center" >
+				<CodeBranch class="size-6"></CodeBranch>
+				{t('section.projects')}
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+				<Projects></Projects>
+
+			</div>
+		</SectionContainer>		
+
+		<SectionContainer id="educacion" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
+			<h2 class="text-white text-3xl font-bold mb-3 flex gap-x-3 items-center " >
+				<UserGraduate class="size-6"></UserGraduate>
+				{t('section.education')}
+			</h2>
+			<Educacion></Educacion>
+		</SectionContainer>
+
+			<SectionContainer id="skills" class="scroll-mt-24 mb-24 transition-all duration-2000 opacity-0 translate-y-10 reveal">
+			<h2 class="text-white text-3xl font-bold mb-3 flex gap-x-3 items-center " >
+				<Code class="size-7"></Code>
+				{t('section.skills')}
+			</h2>
+			<Skills></Skills>
+
+		</SectionContainer>
+
+		<NavMobile></NavMobile>
+	</main>
+</Layout>
+
+<!-- Animación de cada seccion al aparecer por primera vez -->
+<script is:inline>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        observer.unobserve(entry.target); // solo una vez
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+</script>
