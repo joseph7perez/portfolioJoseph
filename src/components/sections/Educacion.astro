@@ -1,136 +1,89 @@
 ---
-const educacion = [
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
-    {
-        universidad: 'Politécnico Grancolombiano',
-        date: '2021 - 2025',
-        titulo: 'Ingeniería de Sistemas',
-    },
-]
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const certificados = [
-    {
-        instituto: 'Udemy',
-        date: 'En curso',
-        titulo: 'Full Stack Node.js React TS NestJS Next.js Creando Proyectos',
-        archivo: ''
-    },
-    {
-        instituto: 'Udemy',
-        date: 'May 2025',
-        titulo: 'Master en JavaScript 2025: Aprender JS, Angular, Node, Astro',
-        archivo: '/certificados/certificadoMasterJS.pdf'
-    },
-    {
-        instituto: 'Udemy',
-        date: 'Feb 2025',
-        titulo: 'Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL',
-        archivo: '/certificados/CertificadoDesarrolloWebCompleto.pdf'
-    },
- 
-];
+const entries = await getCollection('education');
 
-const idiomas = [
-  {
-        instituto: 'Academia de idiomas Smart',
-        date: 'Feb 2025 - A la fecha',
-        titulo: 'Inglés',
-        archivo: ''
-  },
-  // {
-  //       instituto: 'Academia de idiomas Smart',
-  //       date: 'Feb 2025 - A la fecha',
-  //       titulo: 'Inglés',
-  //       archivo: '/certificados/CertificadoDesarrolloWebCompleto.pdf'
-  // }
+const byType = (type: string) =>
+  entries
+    .map(({ data }) => data)
+    .filter((e) => e.type === type)
+    .sort((a, b) => a.order - b.order);
 
-]
-
+const formal = byType('formal');
+const certificados = byType('certificate');
+const idiomas = byType('language');
 ---
-<section id="educacion" class="scroll-mt-24 py-2 bg-neutral-950 text-cyan-100">
+<section class="scroll-mt-24 py-2 bg-neutral-950 text-cyan-100">
   <div class="max-w-4xl mx-auto px-3">
 
     <!-- Educación formal -->
     <div class="space-y-6 mb-12">
-
-      {
-         educacion.map(educacion => (
-            <div class="border-l-4 border-cyan-300 pl-4">
-              <h3 class="text-2xl font-semibold">{educacion.titulo}</h3>
-              <p class="text-2sm text-cyan-200">{educacion.universidad} · {educacion.date}</p>
-              {/* <p class="text-sm text-gray-400 mt-1">Especialización en desarrollo de software y tecnologías web.</p> */}
-            </div>
-         ))
-      }
-
+      {formal.map((item) => (
+        <div class="border-l-4 border-cyan-300 pl-4">
+          <h3 class="text-2xl font-semibold">{item.titulo[lang]}</h3>
+          <p class="text-sm text-cyan-200">{item.institucion} · {item.date[lang]}</p>
+        </div>
+      ))}
     </div>
 
-      <!-- Certificados -->
-      <h3 class="text-2xl font-bold text-cyan-200 mb-4">Certificados</h3>
-     
-      {
-          certificados.map((certificado, i) => (
-            <div class="group flex flex-col justify-center content-center "
-                // onclick={`document.getElementById('modal-${i}').showModal()`}
+    <!-- Certificados -->
+    <h3 class="text-2xl font-bold text-cyan-200 mb-4">{t('education.certificates')}</h3>
+
+    {certificados.map((item) => (
+      <div class="group flex flex-col justify-center content-center">
+        {item.archivo ? (
+          <Fragment>
+            <a
+              href={item.archivo}
+              download
+              class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
             >
-              {
-                certificado.archivo && (
-                  <a
-                    href={certificado.archivo}
-                    download 
-                    class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
-                  >
-                      <p class="text-sm md:text-1lg font-semibold">{certificado.titulo}</p>
-                      <p class="text-xs md:text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
-                  </a>
+              <p class="text-sm md:text-lg font-semibold">{item.titulo[lang]}</p>
+              <p class="text-xs md:text-sm text-cyan-300">{item.institucion} · {item.date[lang]}</p>
+            </a>
+            <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
+              {t('education.download')}
+            </span>
+          </Fragment>
+        ) : (
+          <div class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 transition mb-6">
+            <p class="text-sm md:text-lg font-semibold">{item.titulo[lang]}</p>
+            <p class="text-xs md:text-sm text-cyan-300">{item.institucion} · {item.date[lang]}</p>
+          </div>
+        )}
+      </div>
+    ))}
 
-                  <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Descargar</span>
-                ) || (
-                  <a 
-                    class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition mb-6"
-                  >
-                      <p class="text-sm md:text-1lg font-semibold">{certificado.titulo}</p>
-                      <p class="text-xs md:text-sm text-cyan-300">{certificado.instituto} · {certificado.date}</p>
-                  </a>
-                )               
-              }
-              
-            </div>
-          ))
-        }
+    <!-- Idiomas -->
+    <h3 class="text-2xl font-bold mb-2 mt-5 text-cyan-200">{t('education.languages')}</h3>
 
-       <!-- Idiomas -->
-
-      <h2 class="text-2xl font-bold mb-2 mt-5 text-cyan-200">Idiomas</h2>
-
-          {
-            idiomas.map((idioma, i) => (
-              <div class="group flex flex-col justify-center content-center ">
-
-              {
-                  idioma.archivo && (
-                    <a 
-                      class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
-                      href={idioma.archivo}
-                      download 
-                    >
-                        <p class="text-sm md:text-1lg font-semibold">{idioma.titulo}</p>
-                        <p class="text-xs md:text-sm text-cyan-300">{idioma.instituto} · {idioma.date}</p>
-                    </a>
-
-                    <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">Descargar</span>
-
-                  ) || (
-                      <a 
-                        class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
-                      >
-                          <p class="text-sm md:text-1lg font-semibold">{idioma.titulo}</p>
-                          <p class="text-xs md:text-sm text-cyan-300">{idioma.instituto} · {idioma.date}</p>
-                      </a>
-                  )
-              }
-              </div>     
-            ))
-          }  
-    </div>
+    {idiomas.map((item) => (
+      <div class="group flex flex-col justify-center content-center">
+        {item.archivo ? (
+          <Fragment>
+            <a
+              href={item.archivo}
+              download
+              class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 hover:cursor-pointer hover:bg-neutral-800 transition"
+            >
+              <p class="text-sm md:text-lg font-semibold">{item.titulo[lang]}</p>
+              <p class="text-xs md:text-sm text-cyan-300">{item.institucion} · {item.date[lang]}</p>
+            </a>
+            <span class="mb-2 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
+              {t('education.download')}
+            </span>
+          </Fragment>
+        ) : (
+          <div class="bg-neutral-900 p-4 rounded-lg shadow border border-cyan-900 transition">
+            <p class="text-sm md:text-lg font-semibold">{item.titulo[lang]}</p>
+            <p class="text-xs md:text-sm text-cyan-300">{item.institucion} · {item.date[lang]}</p>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
 </section>
