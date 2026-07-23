@@ -1,95 +1,15 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Projects from '../../components/sections/Projects.astro';
-import { projects } from '../../components/sections/Projects.astro';
-import ProjectGallery from '../../components/projects/ProjectGallery.astro';
-import ProjectLayout from '../../layouts/ProjectLayout.astro';
-import Github from '../../icons/social/Github.astro';
-import Tecnologias from '../../components/ui/Tecnologias.astro';
+import ProjectDetail from '../../components/projects/ProjectDetail.astro';
 
-
-export async function getStaticPaths () {
-    // const projects = await getCollection('projects');
-  
-    return [
-      {params: {slug: '1'}},
-      {params: {slug: '2'}},
-      {params: {slug: '3'}},
-      {params: {slug: '4'}},
-      {params: {slug: '5'}},
-      {params: {slug: '6'}},
-    ];
-};
-
-const { slug } = Astro.params;
-
-let slugProject = '';
-
-    projects.map(project => (
-      slugProject = project.slug
-    ));
-
-// const { project } = Astro.props;
-
-// const projects = await getCollection('projects');
-const project = projects.find(a => a.slug === slug);
-
-// import { projects } from '../../components/Projects.astro';
-// import TechnologyBadge from '../../components/TechnologyBadge.astro';
-
-// const { id } = Astro.params;
-// const project = projects.find(p => p.id === id);
-
-if (!project) {
-   throw new Error(`Proyecto no encontrado para slug: ${slug}`);
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { project: entry.data },
+  }));
 }
+
+const { project } = Astro.props;
 ---
-
-<!-- <Layout title='' description=''>
-  <h1>{slug}</h1>
-  <p>{project.title}</p>
-  <p>{project.description}</p>
-
-    {
-      // projects.map(project => (
-      //   const id = project.slug;
-      
-      // ))
-    
-    }
- 
-
-</Layout> -->
-<ProjectLayout>
-  <section class="max-w-6xl mx-auto px-4 py-10 mt-20">
-    <h1 class="text-white text-3xl md:text-4xl font-bold mb-4">{project.title}</h1>
-
-    <p class="text-1lg md:text-lg text-gray-400 mb-6">{project.description}</p>
-
-    {project.tags && <Tecnologias tags={project.tags}/>}
-
-    {project.images && project.imagesMobile && <ProjectGallery images={project.images} imagesMobile={project.imagesMobile} />}
-
-     <!-- <div class="mt-6 flex flex-wrap gap-2"> 
-       {project.technologies.map(tech => (
-        <TechnologyBadge tech={tech} />
-      ))} 
-    </div> -->
-
-    <div class="m-0 mt-8 grid grid-cols-2 sm:flex gap-3 sm:gap-x-5">
-      {project.github.map((repo) => (
-        <a href={repo.url } target="_blank" class="text-white bg-[#24292F] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center focus:ring-gray-500 ">
-          <Github class="size-5 mr-1"></Github>
-          Ver {repo.name}
-        </a>
-      ))}
-       {project.link && (
-        <a href={project.link} target="_blank" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">
-          
-          Ver en Web
-        </a>
-      )} 
-    </div>
-  </section>
-</ProjectLayout> 
+<ProjectDetail project={project} />
