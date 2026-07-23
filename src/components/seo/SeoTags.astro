@@ -1,0 +1,19 @@
+---
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+
+// Ruta actual sin el prefijo de idioma, para generar la URL equivalente
+// en cada idioma.
+const path = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+
+const urlEs = getAbsoluteLocaleUrl('es', path);
+const urlEn = getAbsoluteLocaleUrl('en', path);
+const canonical = lang === 'en' ? urlEn : urlEs;
+---
+
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="es" href={urlEs} />
+<link rel="alternate" hreflang="en" href={urlEn} />
+<link rel="alternate" hreflang="x-default" href={urlEs} />
