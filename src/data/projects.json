@@ -1,0 +1,183 @@
+[
+  {
+    "id": "jperfumes",
+    "title": "JPERFUMES",
+    "description": {
+      "es": "Desarrollé el ecommerce de nuestra empresa propia de venta de perfumería, hoy en producción y operando con ventas reales. Lo construí como una aplicación full stack con arquitectura desacoplada utilizando Next.js (App Router), TailwindCSS, NestJS, Prisma y PostgreSQL, estructurando el backend de forma modular: cada capa del negocio vive en un módulo independiente con sus propios servicios y controladores, de modo que la plataforma sea escalable y permita incorporar nuevas funcionalidades sin afectar lo construido. Del lado del cliente implementé el catálogo de productos, búsqueda de productos, carrito de compras con Zustand, el flujo completo de checkout y Mercado Pago como pasarela. Del lado administrativo, un panel independiente para la gestión de productos, categorías, órdenes, precios de envío y reportes, con autenticación y protección de los endpoints de administración con JWT, Guards y roles. Integré Webhooks para la validación segura de pagos, Supabase para la base de datos, Cloudinary para la gestión de imágenes y Resend para el envío de correos transaccionales. Además, dediqué tiempo a optimizar la experiencia del usuario, cuidando aspectos como el rendimiento, el SEO, la carga de imágenes y el diseño responsive. Desplegué la aplicación en producción con Vercel y Render",
+      "en": "Built the ecommerce platform for our own perfume retail business, currently live in production and running real sales. I developed it as a full-stack application with a decoupled architecture using Next.js (App Router), TailwindCSS, NestJS, Prisma and PostgreSQL, structuring the backend in a modular way: each business layer lives in its own independent module with its own services and controllers, keeping the platform scalable and allowing new features to be added without affecting what's already built. On the customer side I implemented the product catalog, product search, the shopping cart with Zustand, the full checkout flow and Mercado Pago as the payment gateway. On the admin side, a standalone panel to manage products, categories, orders, shipping rates and reports, with authentication and protected admin endpoints using JWT, Guards and roles. I integrated webhooks for secure payment validation, Supabase for the database, Cloudinary for image management and Resend for transactional emails. I also invested time in optimizing the user experience, taking care of aspects such as performance, SEO, image loading and responsive design. Deployed to production on Vercel and Render."
+    },
+    "link": "https://jperfumes.co",
+    "github": [],
+    "image": "/projects/Jperfumes1.avif",
+    "images": [
+      "/projects/Jperfumes1.avif",
+      "/projects/Jperfumes2.avif",
+      "/projects/Jperfumes3.avif",
+      "/projects/Jperfumes_arquitectura_detallada.avif"
+    ],
+    "imagesMobile": [
+      "/projects/JperfumesMobile1.avif",
+      "/projects/JperfumesMobile2.avif",
+      "/projects/JperfumesMobile3.avif"
+    ],
+    "tags": ["NextJS", "TAILWIND", "TypeScript", "NestJS", "Prisma", "PostgreSQL"],
+    "slug": "jperfumes"
+  },
+  {
+    "id": "devtree",
+    "title": "DevTree",
+    "description": {
+      "es": "Este proyecto es un clon de LinkTree, en donde los usuarios crean una cuenta y pueden agregar información acerca de lo que hacen, añadiendo enlaces de sus redes sociales. Y por último pueden compartir el enlace de su perfil para que las demás personas los puedan ver sus redes sociales e información.",
+      "en": "A LinkTree clone where users create an account and add information about what they do, along with links to their social networks. Finally, they can share their profile link so others can see their social networks and information."
+    },
+    "link": "https://devtree-joseph-perez.vercel.app/",
+    "github": [
+      { "name": "frontend", "url": "https://github.com/joseph7perez/DevTree_frontend" },
+      { "name": "backend", "url": "https://github.com/joseph7perez/Devtree_backend" }
+    ],
+    "image": "/projects/DevTree2.avif",
+    "images": [
+      "/projects/DevTree2.avif",
+      "/projects/DevTree3.avif",
+      "/projects/DevTree4.avif",
+      "/projects/DevTree5.avif"
+    ],
+    "imagesMobile": [
+      "/projects/DevTree6.avif",
+      "/projects/DevTree7.avif",
+      "/projects/DevTree8.avif"
+    ],
+    "tags": ["Html", "TAILWIND", "React", "TypeScript", "Express", "NodeJS", "MongoDB"],
+    "slug": "devtree"
+  },
+  {
+    "id": "barbershop",
+    "title": "BarberShop",
+    "description": {
+      "es": "Sitio web responsive para el agendamiento y reservas de citas para una barbería, en donde el cliente podrá escoger el o los servicios que desea, elegir la fecha y hora, finalmente podrá ver el resumen de su cita. El sitio web cuenta con panel de administrador para la gestión del CRUD de los servicios ofrecidos por la barbería y en donde también podrá visualizar las citas asignadas en el día seleccionado.",
+      "en": "Responsive website for scheduling and booking barbershop appointments, where the client can pick one or more services, choose the date and time, and finally review a summary of their appointment. It includes an admin panel to manage the CRUD of the services offered by the barbershop, and to view the appointments booked for the selected day."
+    },
+    "link": "",
+    "github": [
+      { "name": "repositorio", "url": "https://github.com/joseph7perez/barberShop" }
+    ],
+    "image": "/projects/barberShop1.avif",
+    "images": [
+      "/projects/barberShop1.avif",
+      "/projects/barberShop2.avif",
+      "/projects/barberShop3.avif",
+      "/projects/barberShop4.avif"
+    ],
+    "imagesMobile": [
+      "/projects/barberShop5.avif",
+      "/projects/barberShop6.avif",
+      "/projects/barberShop7.avif"
+    ],
+    "tags": ["Html", "PHP", "JavaScript", "Sass", "MySQL"],
+    "slug": "barbershop"
+  },
+  {
+    "id": "technofestival",
+    "title": "TecnhoFestival",
+    "description": {
+      "es": "Este proyecto está diseñado para capturar la energía y la esencia de un festival de música electrónica. En la sección principal, un video en bucle de un DJ en vivo da la bienvenida a los visitantes. El sitio incluye un Line Up, donde se destacan los artistas y horarios de presentación. También cuenta con una galería de imágenes dinámica, que permite hacer clic sobre cada foto para verla en pantalla completa. Finalmente, los usuarios pueden acceder fácilmente a la sección de boletos disponibles, donde pueden consultar precios y lo que incluye.",
+      "en": "Designed to capture the energy and essence of an electronic music festival. On the main section, a looping video of a live DJ welcomes visitors. The site includes a Line Up highlighting the artists and set times. It also features a dynamic image gallery where you can click any photo to view it full screen. Finally, users can easily reach the available tickets section to check prices and what each one includes."
+    },
+    "link": "https://technofestivaljoseph.netlify.app/",
+    "github": [
+      { "name": "repositorio", "url": "https://github.com/joseph7perez/technofestival" }
+    ],
+    "image": "/projects/tecnoFestival5.avif",
+    "images": [
+      "/projects/tecnoFestival5.avif",
+      "/projects/tecnoFestival4.avif",
+      "/projects/tecnoFestival3.avif",
+      "/projects/tecnoFestival6.avif"
+    ],
+    "imagesMobile": [
+      "/projects/tecnoFestival1.avif",
+      "/projects/tecnoFestival2.avif",
+      "/projects/tecnoFestival7.avif"
+    ],
+    "tags": ["Html", "Sass", "JavaScript"],
+    "slug": "technofestival"
+  },
+  {
+    "id": "uptask",
+    "title": "UpTask",
+    "description": {
+      "es": "Sitio web dashboard para la gestión de proyectos, creando sus respectivas tareas, cambiando su estado a completadas o pendientes. Con CRUD de los proyectos y de las tareas",
+      "en": "Dashboard web app for project management: create projects and their tasks, and toggle their status between completed and pending. Includes full CRUD for both projects and tasks."
+    },
+    "link": "",
+    "github": [
+      { "name": "repositorio", "url": "https://github.com/joseph7perez/UpTask" }
+    ],
+    "image": "/projects/Uptask2.avif",
+    "images": [
+      "/projects/Uptask2.avif",
+      "/projects/Uptask3.avif",
+      "/projects/Uptask5.avif",
+      "/projects/Uptask6.avif"
+    ],
+    "imagesMobile": [
+      "/projects/Uptask1.avif",
+      "/projects/Uptask4.avif",
+      "/projects/Uptask7.avif"
+    ],
+    "tags": ["Html", "PHP", "JavaScript", "Sass", "MySQL"],
+    "slug": "uptask"
+  },
+  {
+    "id": "devwebcamp",
+    "title": "DevWebcamp",
+    "description": {
+      "es": "Sitio web responsive con dashboard en el panel admin para la gestión del CRUD de ponentes, eventos, registrados y regalos. Evento sobre desarrollo web, con las conferencias disponibles y su respectiva información (fecha, lugar, ponente y tema), con los paquetes y boletos disponibles. Con un login, creación de cuenta, recuperación de contraseña y confirmación de cuenta.",
+      "en": "Responsive website with an admin dashboard to manage the CRUD of speakers, events, registrations and gifts. A web development event showing the available talks with their details (date, venue, speaker and topic), plus the available packages and tickets. Includes login, account creation, password recovery and account confirmation."
+    },
+    "link": "",
+    "github": [
+      { "name": "repositorio", "url": "https://github.com/joseph7perez/DevWebcamp" }
+    ],
+    "image": "/projects/DevWebcamp7.avif",
+    "images": [
+      "/projects/DevWebcamp1.avif",
+      "/projects/DevWebcamp2.avif",
+      "/projects/DevWebcamp3.avif",
+      "/projects/DevWebcamp7.avif"
+    ],
+    "imagesMobile": [
+      "/projects/DevWebcamp5.avif",
+      "/projects/DevWebcamp4.avif",
+      "/projects/DevWebcamp6.avif"
+    ],
+    "tags": ["Html", "PHP", "JavaScript", "Sass", "MySQL"],
+    "slug": "devwebcamp"
+  },
+  {
+    "id": "bienesraices",
+    "title": "BienesRaices",
+    "description": {
+      "es": "Sitio web responsive con login para ingresar al dashboard del panel de administrador para la gestión del CRUD de propiedades y vendedores. Los usuarios podrán ver información sobre la venta de propiedades y viviendas, navegar por un blog y conocer sobre las empresa.",
+      "en": "Responsive website with login to access the admin dashboard for managing the CRUD of properties and sellers. Users can view information about properties and homes for sale, browse a blog, and learn about the company."
+    },
+    "link": "",
+    "github": [
+      { "name": "repositorio", "url": "https://github.com/joseph7perez/bienesraices" }
+    ],
+    "image": "/projects/bienesRaices5.avif",
+    "images": [
+      "/projects/bienesRaices5.avif",
+      "/projects/bienesRaices1.avif",
+      "/projects/bienesRaices6.avif",
+      "/projects/bienesRaices7.avif"
+    ],
+    "imagesMobile": [
+      "/projects/bienesRaices2.avif",
+      "/projects/bienesRaices3.avif",
+      "/projects/bienesRaices4.avif"
+    ],
+    "tags": ["Html", "PHP", "JavaScript", "Sass", "MySQL"],
+    "slug": "bienesraices"
+  }
+]

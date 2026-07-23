@@ -1,0 +1,56 @@
+[
+  {
+    "id": "poli-ing-sistemas",
+    "type": "formal",
+    "order": 1,
+    "institucion": "Politécnico Grancolombiano",
+    "date": { "es": "2021 - 2025", "en": "2021 - 2025" },
+    "titulo": { "es": "Ingeniería de Sistemas", "en": "Systems Engineering" },
+    "archivo": ""
+  },
+  {
+    "id": "udemy-fullstack-nest-next",
+    "type": "certificate",
+    "order": 1,
+    "institucion": "Udemy",
+    "date": { "es": "En curso", "en": "In progress" },
+    "titulo": {
+      "es": "Full Stack Node.js React TS NestJS Next.js Creando Proyectos",
+      "en": "Full Stack Node.js React TS NestJS Next.js Creando Proyectos"
+    },
+    "archivo": ""
+  },
+  {
+    "id": "udemy-master-js",
+    "type": "certificate",
+    "order": 2,
+    "institucion": "Udemy",
+    "date": { "es": "May 2025", "en": "May 2025" },
+    "titulo": {
+      "es": "Master en JavaScript 2025: Aprender JS, Angular, Node, Astro",
+      "en": "Master en JavaScript 2025: Aprender JS, Angular, Node, Astro"
+    },
+    "archivo": "/certificados/certificadoMasterJS.pdf"
+  },
+  {
+    "id": "udemy-desarrollo-web-completo",
+    "type": "certificate",
+    "order": 3,
+    "institucion": "Udemy",
+    "date": { "es": "Feb 2025", "en": "Feb 2025" },
+    "titulo": {
+      "es": "Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL",
+      "en": "Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL"
+    },
+    "archivo": "/certificados/CertificadoDesarrolloWebCompleto.pdf"
+  },
+  {
+    "id": "smart-ingles",
+    "type": "language",
+    "order": 1,
+    "institucion": "Academia de idiomas Smart",
+    "date": { "es": "Feb 2025 - A la fecha", "en": "Feb 2025 - Present" },
+    "titulo": { "es": "Inglés", "en": "English" },
+    "archivo": ""
+  }
+]
