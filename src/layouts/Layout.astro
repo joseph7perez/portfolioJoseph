@@ -1,72 +1,20 @@
 ---
-// Supports weights 100-900
-import '@fontsource-variable/onest';
+import BaseLayout from "./BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import '../styles/global.css'
 
 interface Props {
 	title: string,
 	description: string,
 }
 
-const {description, title} = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description}>
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="px-6 bg-neutral-950 relative z-0 min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] overflow-x-hidden max-w-screen">
-		<!-- <div class="relative h-full w-full bg-slate-950">
-			<div class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]">
-			</div>
-		</div> -->
-		<!-- <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div> -->
-		<!-- <div class="hidden md:block contents"> -->
-			<Header/>
+<BaseLayout title={title} description={description}>
+	<Header />
 
+	<slot /> <!--Acá se renderizan nuestras paginas -->
 
-		<slot /> <!--Acá de renderizan nuestras paginas -->
-		<Footer></Footer>
-	</body>
-</html>
-
-<style>
-
-	:root{
-		color-scheme: light dark;
-	}
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100vh;
-	}
-
-	html {
-		font-family: 'Onest Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		scroll-behavior: smooth;
-
-	}
-
-	body {
-		/* background-color: midnightblue; */
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	@media (prefers-reduced-motion: reduce){
-		html{
-			scroll-behavior: auto;
-		}
-	}
-</style>
+	<Footer />
+</BaseLayout>
