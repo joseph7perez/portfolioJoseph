@@ -1,15 +1,25 @@
-<footer class="bg-black/10 text-white py-10 mt-16 w-dvw p-5">
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const home = getRelativeLocaleUrl(lang, '/');
+---
+
+<footer class="bg-black/10 text-white py-10 mt-16 w-full p-5">
   <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-y-6">
-    
+
     <!-- Navegación -->
     <nav class="flex flex-wrap justify-center gap-x-6 text-sm opacity-80">
-      <a href="/" class="hover:underline transition duration-200">Inicio</a>
+      <a href={home} class="hover:underline transition duration-200">{t('nav.home')}</a>
     </nav>
 
     <!-- Créditos o redes -->
     <div class="text-xs text-gray-400 text-center md:text-right">
-      © {new Date().getFullYear()} Joseph Pérez. Todos los derechos reservados.
+      © {new Date().getFullYear()} Joseph Pérez. {t('footer.rights')}
     </div>
-    
+
   </div>
 </footer>

@@ -1,7 +1,13 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 import ArrowLeft from "../../icons/ui/ArrowLeft.astro";
+import LangToggle from '../ui/LangToggle.astro';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
+const home = getRelativeLocaleUrl(lang, '/');
 ---
 <script>
   //Colocar el header con fondo oscuro al hacer scroll
@@ -17,21 +23,23 @@ import ArrowLeft from "../../icons/ui/ArrowLeft.astro";
   }
 </script>
 
-<header class="w-full px-4 py-5 flex justify-between md:justify-around items-center  mx-auto fixed top-0 z-50 transition-all duration-300  ">
+<header class="w-full px-4 py-5 flex justify-between md:justify-around items-center mx-auto fixed top-0 z-50 transition-all duration-300">
   <!-- Foto de perfil -->
-   <a href="/">
-        <img
-        loading="lazy"
-        class="rounded-full size-12"
-        src="/fotoPerfil.avif"
-        alt="Foto de perfil"
-        />
-    </a>
-  
+  <a href={home}>
+    <img
+      loading="lazy"
+      class="rounded-full size-12"
+      src="/fotoPerfil.avif"
+      alt={t('header.photoAlt')}
+    />
+  </a>
 
-    <a href="/" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none rounded-full border focus:z-10 focus:ring-4 focus:ring-gray-700 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] border-gray-600 text-gray-400 hover:text-white hover:bg-gray-700 text-center inline-flex items-center">
+  <div class="flex items-center gap-3">
+    <LangToggle />
+
+    <a href={home} class="py-2.5 px-5 text-sm font-medium focus:outline-none rounded-full border focus:z-10 focus:ring-4 focus:ring-gray-700 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] border-gray-600 text-gray-400 hover:text-white hover:bg-gray-700 text-center inline-flex items-center">
       <ArrowLeft class="size-5 mr-1"></ArrowLeft>
-      Volver
+      {t('project.back')}
     </a>
-
+  </div>
 </header>
