@@ -9,9 +9,21 @@
     "archivo": ""
   },
   {
-    "id": "udemy-fullstack-nest-next",
+    "id": "platzi-nextjs-avanzado",
     "type": "certificate",
     "order": 1,
+    "institucion": "Platzi",
+    "date": { "es": "Ago 2026", "en": "Aug 2026" },
+    "titulo": {
+      "es": "Next.js Avanzado",
+      "en": "Next.js Avanzado"
+    },
+    "archivo": "/certificados/diploma-nextjs15.pdf"
+  },
+  {
+    "id": "udemy-fullstack-nest-next",
+    "type": "certificate",
+    "order": 2,
     "institucion": "Udemy",
     "date": { "es": "En curso", "en": "In progress" },
     "titulo": {
@@ -23,7 +35,7 @@
   {
     "id": "udemy-master-js",
     "type": "certificate",
-    "order": 2,
+    "order": 3,
     "institucion": "Udemy",
     "date": { "es": "May 2025", "en": "May 2025" },
     "titulo": {
@@ -35,7 +47,7 @@
   {
     "id": "udemy-desarrollo-web-completo",
     "type": "certificate",
-    "order": 3,
+    "order": 4,
     "institucion": "Udemy",
     "date": { "es": "Feb 2025", "en": "Feb 2025" },
     "titulo": {
