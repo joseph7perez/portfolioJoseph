@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# herramientas de IA / navegador (caché, capturas y logs)
+.impeccable/
+.playwright-mcp/
