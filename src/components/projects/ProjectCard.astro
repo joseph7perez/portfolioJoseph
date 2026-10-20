@@ -1,0 +1,92 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { tags } from '../../data/tags.astro';
+
+const { project, featured = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const detailUrl = getRelativeLocaleUrl(lang, `/projects/${project.slug}`);
+
+// Solo se muestran las primeras tecnologías; el resto se resume en "+N".
+const maxTags = featured ? 6 : 3;
+const names = project.tags.map((key: string) => tags[key]?.name).filter(Boolean);
+const visibleTags = names.slice(0, maxTags);
+const hiddenCount = names.length - visibleTags.length;
+
+const actionBase = 'inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300';
+---
+
+<article
+  class:list={[
+    'group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/70 hover:bg-white/5 focus-within:border-cyan-300',
+    featured && 'md:flex-row',
+  ]}
+>
+  <img
+    loading={featured ? 'eager' : 'lazy'}
+    class:list={[
+      'w-full aspect-video object-cover object-top border-b border-white/10',
+      featured && 'md:w-1/2 md:aspect-auto md:border-b-0 md:border-e',
+    ]}
+    src={project.image}
+    alt={`${t('projects.screenshotAlt')} ${project.title}`}
+  />
+
+  <div class:list={['flex flex-1 flex-col gap-2.5 p-4', featured && 'md:p-7 md:gap-4']}>
+    {featured && (
+      <span class="w-fit rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-0.5 text-xs font-medium text-cyan-200">
+        {t('projects.featured')}
+      </span>
+    )}
+
+    <h3 class:list={['font-semibold text-cyan-200', featured ? 'text-3xl' : 'text-xl']}>
+      <!-- El enlace del título cubre toda la tarjeta; los botones de abajo quedan por encima (z-10) -->
+      <a
+        href={detailUrl}
+        class="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+      >
+        {project.title}
+        <span aria-hidden="true" class="inline-block -translate-x-1 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-within:translate-x-0 group-focus-within:opacity-100"> →</span>
+      </a>
+    </h3>
+
+    <p class:list={['text-gray-300 text-pretty', featured ? 'text-base line-clamp-6' : 'text-sm line-clamp-2']}>
+      {project.description[lang]}
+    </p>
+
+    <ul class="flex flex-wrap gap-2" aria-label="Stack">
+      {visibleTags.map((name: string) => (
+        <li class="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-gray-300">{name}</li>
+      ))}
+      {hiddenCount > 0 && (
+        <li class="px-1 py-0.5 text-xs text-gray-400">+{hiddenCount}</li>
+      )}
+    </ul>
+
+    <div class="relative z-10 mt-auto flex flex-wrap gap-2 pt-2">
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`${actionBase} bg-cyan-400 font-semibold text-neutral-950 hover:bg-cyan-300`}
+        >
+          {t('project.viewLive')}
+        </a>
+      )}
+      {project.github.map((repo: { name: string; url: string }) => (
+        <a
+          href={repo.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`${actionBase} border border-white/20 text-gray-200 hover:bg-white/10`}
+        >
+          {t('project.viewRepo')} {t(`repo.${repo.name}`)}
+        </a>
+      ))}
+    </div>
+  </div>
+</article>

@@ -1,77 +1,83 @@
 ---
-const { images, imagesMobile } = Astro.props;
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
-// Agrupar de 3 en 3
-const chunkedImages = [];
-for (let i = 0; i < images.length; i += 2) {
-  chunkedImages.push(images.slice(i, i + 2));
-}
+const { images, imagesMobile, title } = Astro.props;
 
-// const imagenMobile = imagesMobile[1];
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-//Resultado
-// [
-//   ["img1", "img2", "img3"],
-//   ["img4", "img5", "img6"],
-//   ["img7", "img8", "img9"]
-// ]
+// El diagrama de arquitectura se muestra aparte, en su propia tarjeta
+const isDiagram = (src: string) => /arquitectura|architecture/i.test(src);
+const screenshots = images.filter((src: string) => !isDiagram(src));
+const diagrams = images.filter(isDiagram);
 ---
 
-<!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-  {images.map((img: string | null | undefined, i: number) => (
-    <img src={img} alt={`Imagen ${i + 1}`} class="rounded-xl shadow-md" loading="lazy" />
-  ))}
-</div> -->
-
-
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <!-- Mostrar grupos de a tres imagenes -->
-  {images.map((img: string | null | undefined) => (
-    <div class="grid gap-4">
-        <div>
-          <img loading="lazy" class="h-auto max-w-full rounded-lg" src={img} alt="Image" />
-        </div>
+  {screenshots.map((img: string, i: number) => (
+    <img
+      loading="lazy"
+      class:list={[
+        'h-auto max-w-full rounded-lg',
+        // Si queda una captura sola en la última fila, se centra en lugar de dejar un hueco
+        i === screenshots.length - 1 && screenshots.length % 2 === 1 && 'sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.5rem)]',
+      ]}
+      src={img}
+      alt={`${title} - ${t('gallery.desktop')} ${i + 1}`}
+    />
+  ))}
+</div>
+
+{diagrams.map((img: string) => (
+  <!-- Fondo claro fijo: el diagrama tiene fondo transparente y textos oscuros -->
+  <!-- En móvil se recorta el margen en blanco de la imagen y se desplaza en horizontal, para ocupar menos alto sin perder legibilidad (medidas ajustadas al diagrama actual: 1069x1100, contenido en x 78-994 e y 68-1038) -->
+  <div class="mt-4 overflow-x-auto rounded-lg bg-white p-3 md:p-6" tabindex="0" role="region" aria-label={`${title} - ${t('gallery.architecture')}`}>
+    <div class="relative mx-auto h-[508px] w-[480px] overflow-hidden md:h-auto md:w-full md:max-w-3xl md:overflow-visible">
+      <img
+        loading="lazy"
+        class="absolute -left-[41px] -top-[36px] h-auto w-[560px] max-w-none md:static md:w-full md:max-w-3xl"
+        src={img}
+        alt={`${title} - ${t('gallery.architecture')}`}
+      />
+    </div>
+  </div>
+))}
+
+<div class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-10">
+  {imagesMobile.map((img: string, i: number) => (
+    <div class="relative border-gray-700 bg-gray-700 border-[10px] rounded-[2rem] md:border-[12px] shadow-xl
+                w-[200px] h-[400px] md:w-[240px] md:h-[480px]">
+
+      <!-- Botón superior (borde superior del teléfono) -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gray-700 rounded-b-[0.75rem]
+                  w-[100px] h-[14px] md:w-[118px] md:h-[14px]">
+      </div>
+
+      <!-- Botones laterales (izquierda) -->
+      <div class="absolute bg-gray-700 rounded-s-lg
+                  w-[2px] h-[32px] md:w-[3px] md:h-[37px]
+                  -start-[12px] md:-start-[15px] top-[80px] md:top-[99px]">
+      </div>
+      <div class="absolute bg-gray-700 rounded-s-lg
+                  w-[2px] h-[32px] md:w-[3px] md:h-[37px]
+                  -start-[12px] md:-start-[15px] top-[120px] md:top-[142px]">
+      </div>
+
+      <!-- Botón lateral (derecha) -->
+      <div class="absolute bg-gray-700 rounded-e-lg
+                  w-[2px] h-[48px] md:w-[3px] md:h-[51px]
+                  -end-[12px] md:-end-[15px] top-[100px] md:top-[114px]">
+      </div>
+
+      <!-- Pantalla -->
+      <div class="overflow-hidden rounded-[1.5rem] bg-gray-800
+                  w-[180px] h-[380px] md:w-[216px] md:h-[456px]">
+        <img
+          loading="lazy"
+          src={img}
+          class="w-full h-full object-cover"
+          alt={`${title} - ${t('gallery.mobile')} ${i + 1}`}
+        />
+      </div>
     </div>
   ))}
 </div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-  {imagesMobile.map((img: string | null | undefined) => (
-
-        <div class="relative mx-auto border-gray-700 bg-gray-700 border-[10px] rounded-[2rem] md:border-[14px] md:rounded-[2.5rem] shadow-xl mt-5
-              w-[200px] h-[400px]  md:w-[300px] md:h-[600px]">
-
-            <!-- Botón superior (borde superior del teléfono) -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gray-700 rounded-b-[0.75rem]
-                        w-[100px] h-[14px]  md:w-[148px] md:h-[18px]">
-            </div>
-
-            <!-- Botones laterales (izquierda) -->
-            <div class="absolute bg-gray-700 rounded-s-lg
-                        w-[2px] h-[32px]  md:w-[3px] md:h-[46px] 
-                        -start-[12px] md:-start-[17px] top-[80px] md:top-[124px]">
-            </div>
-            <div class="absolute bg-gray-700 rounded-s-lg
-                        w-[2px] h-[32px]  md:w-[3px] md:h-[46px] 
-                        -start-[12px] md:-start-[17px] top-[120px]  md:top-[178px]">
-            </div>
-
-            <!-- Botón lateral (derecha) -->
-            <div class="absolute bg-gray-700 rounded-e-lg
-                        w-[2px] h-[48px]  md:w-[3px] md:h-[64px]
-                        -end-[12px] md:-end-[17px] top-[100px]  md:top-[142px]">
-            </div>
-
-            <!-- Pantalla -->
-            <div class="overflow-hidden rounded-[1.5rem] bg-gray-800
-                        w-[180px] h-[380px]  md:w-[272px] md:h-[572px]">
-              <img loading="lazy" src={img} class="w-full h-full object-cover" alt="imagenMobile" />
-            </div>
-          </div>
-    ))}
-</div>
-
-
-
-

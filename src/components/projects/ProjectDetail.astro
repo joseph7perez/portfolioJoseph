@@ -14,35 +14,71 @@ const { project } = Astro.props;
 // Los tags llegan como strings desde la colección; aquí se resuelven
 // al objeto con nombre, icono y color que espera <Tecnologias />
 const projectTags = project.tags.map((key) => tags[key]);
+
+// La descripción puede traer varios párrafos separados por una línea en blanco.
+const [intro, ...rest] = project.description[lang].split('\n\n');
 ---
 
 <ProjectLayout 
   title={`${project.title} · Joseph Pérez`}
   description={project.description[lang].slice(0, 155)}
 >
-  <section class="max-w-6xl mx-auto px-4 py-10 mt-20">
+  <section class="w-full max-w-6xl mx-auto px-4 py-10 mt-20">
     <h1 class="text-white text-3xl md:text-4xl font-bold mb-4">{project.title}</h1>
 
-    <p class="text-base md:text-lg text-gray-400 mb-6">{project.description[lang]}</p>
+    <div class="mb-6 text-base md:text-lg leading-relaxed text-gray-400">
+      <p>{intro}</p>
 
-    {projectTags.length > 0 && <Tecnologias tags={projectTags} />}
+      {rest.length > 0 && (
+        <>
+          <!-- En móvil el resto del texto queda plegado; desde md siempre es visible -->
+          <div id="project-more" class="hidden md:block space-y-4 mt-4">
+            {rest.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <button
+            type="button"
+            id="project-more-toggle"
+            aria-controls="project-more"
+            aria-expanded="false"
+            data-more={t('project.readMore')}
+            data-less={t('project.readLess')}
+            class="md:hidden mt-1 py-3 text-sm font-medium text-cyan-300 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+          >
+            {t('project.readMore')}
+          </button>
+        </>
+      )}
+    </div>
 
-    {project.images && project.imagesMobile && (
-      <ProjectGallery images={project.images} imagesMobile={project.imagesMobile} />
-    )}
-
-    <div class="m-0 mt-8 grid grid-cols-2 sm:flex gap-3 sm:gap-x-5">
+    <div class="mb-8 flex flex-wrap gap-3">
+      {project.link && (
+        <a href={project.link} target="_blank" rel="noopener noreferrer" class="bg-cyan-400 text-neutral-950 hover:bg-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 font-semibold rounded-lg text-sm px-5 py-3 text-center inline-flex items-center transition">
+          {t('project.viewLive')}
+        </a>
+      )}
       {project.github.map((repo) => (
-        <a href={repo.url} target="_blank" rel="noopener" class="text-white bg-[#24292F] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center focus:ring-gray-500 ">
+        <a href={repo.url} target="_blank" rel="noopener noreferrer" class="text-white bg-[#24292F] hover:bg-[#2f353b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300 font-medium rounded-lg text-sm px-5 py-3 text-center inline-flex items-center">
           <Github class="size-5 mr-1"></Github>
           {t('project.viewRepo')} {t(`repo.${repo.name}`)}
         </a>
       ))}
-      {project.link && (
-        <a href={project.link} target="_blank" rel="noopener" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">
-          {t('project.viewLive')}
-        </a>
-      )}
     </div>
+
+    {projectTags.length > 0 && <Tecnologias tags={projectTags} />}
+
+    {project.images && project.imagesMobile && (
+      <ProjectGallery title={project.title} images={project.images} imagesMobile={project.imagesMobile} />
+    )}
   </section>
 </ProjectLayout>
+
+<script>
+  // Despliega o pliega el resto de la descripción en móvil
+  const toggle = document.getElementById("project-more-toggle");
+  const more = document.getElementById("project-more");
+  toggle?.addEventListener("click", () => {
+    const expanded = more?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.textContent = expanded ? toggle.dataset.less : toggle.dataset.more;
+  });
+</script>

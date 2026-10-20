@@ -1,10 +1,11 @@
 [
   {
     "id": "jperfumes",
+    "featured": true,
     "title": "JPERFUMES",
     "description": {
-      "es": "Desarrollé el ecommerce de nuestra empresa propia de venta de perfumería, hoy en producción y operando con ventas reales. Lo construí como una aplicación full stack con arquitectura desacoplada utilizando Next.js (App Router), TailwindCSS, NestJS, Prisma y PostgreSQL, estructurando el backend de forma modular: cada capa del negocio vive en un módulo independiente con sus propios servicios y controladores, de modo que la plataforma sea escalable y permita incorporar nuevas funcionalidades sin afectar lo construido. Del lado del cliente implementé el catálogo de productos, búsqueda de productos, carrito de compras con Zustand, el flujo completo de checkout y Mercado Pago como pasarela. Del lado administrativo, un panel independiente para la gestión de productos, categorías, órdenes, precios de envío y reportes, con autenticación y protección de los endpoints de administración con JWT, Guards y roles. Integré Webhooks para la validación segura de pagos, Supabase para la base de datos, Cloudinary para la gestión de imágenes y Resend para el envío de correos transaccionales. Además, dediqué tiempo a optimizar la experiencia del usuario, cuidando aspectos como el rendimiento, el SEO, la carga de imágenes y el diseño responsive. Desplegué la aplicación en producción con Vercel y Render",
-      "en": "Built the ecommerce platform for our own perfume retail business, currently live in production and running real sales. I developed it as a full-stack application with a decoupled architecture using Next.js (App Router), TailwindCSS, NestJS, Prisma and PostgreSQL, structuring the backend in a modular way: each business layer lives in its own independent module with its own services and controllers, keeping the platform scalable and allowing new features to be added without affecting what's already built. On the customer side I implemented the product catalog, product search, the shopping cart with Zustand, the full checkout flow and Mercado Pago as the payment gateway. On the admin side, a standalone panel to manage products, categories, orders, shipping rates and reports, with authentication and protected admin endpoints using JWT, Guards and roles. I integrated webhooks for secure payment validation, Supabase for the database, Cloudinary for image management and Resend for transactional emails. I also invested time in optimizing the user experience, taking care of aspects such as performance, SEO, image loading and responsive design. Deployed to production on Vercel and Render."
+      "es": "Ecommerce de nuestra empresa de perfumería, en producción y con ventas reales. Lo desarrollé de punta a punta como aplicación full stack con arquitectura desacoplada: frontend en Next.js (App Router) y TailwindCSS, y un backend modular en NestJS con Prisma y PostgreSQL (Supabase).\n\nImplementé el catálogo con búsqueda, el carrito (Zustand) y el checkout con Mercado Pago, con webhooks para validar los pagos. También un panel de administración para productos, categorías, órdenes, envíos y reportes, protegido con JWT, Guards y roles. Además integré Cloudinary para imágenes y Resend para correos transaccionales, y desplegué en Vercel y Render.",
+      "en": "Ecommerce for our own perfume business, live in production with real sales. I built it end to end as a full-stack application with a decoupled architecture: a Next.js (App Router) and TailwindCSS frontend, and a modular NestJS backend with Prisma and PostgreSQL (Supabase).\n\nI implemented the catalog with search, the cart (Zustand) and checkout with Mercado Pago, with webhooks to validate payments. I also built an admin panel for products, categories, orders, shipping and reports, protected with JWT, Guards and roles. I integrated Cloudinary for images and Resend for transactional emails, and deployed to Vercel and Render."
     },
     "link": "https://jperfumes.co",
     "github": [],
@@ -20,7 +21,7 @@
       "/projects/JperfumesMobile2.avif",
       "/projects/JperfumesMobile3.avif"
     ],
-    "tags": ["NextJS", "TAILWIND", "TypeScript", "NestJS", "Prisma", "PostgreSQL"],
+    "tags": ["NextJS", "TAILWIND", "TypeScript", "NestJS", "Prisma", "PostgreSQL", "Supabase", "Zustand", "MercadoPago", "Cloudinary", "Resend", "Vercel", "Render"],
     "slug": "jperfumes"
   },
   {
