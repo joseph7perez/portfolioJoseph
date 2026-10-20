@@ -22,8 +22,9 @@ const lang = getLangFromUrl(Astro.url);
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<SeoTags />
+		<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 	</head>
-	<body class="px-6 bg-neutral-950 relative z-0 min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] overflow-x-hidden max-w-screen">
+	<body class="px-6 bg-neutral-950 relative z-0 min-h-screen overflow-x-hidden max-w-screen">
 		<slot />
 	</body>
 </html>

@@ -8,12 +8,13 @@ const t = useTranslations(lang);
       loading="lazy"
       src="/fotoPerfilSobremi.avif"
       alt={t('about.alt')}
-      class="size-45 lg:size-55 rounded-full border-2 border-cyan-100 shadow-lg object-cover"
+      class="size-55 lg:size-65 rounded-full border-2 border-cyan-100 shadow-lg object-cover"
     />
     <div class="flex-1 space-y-4">
       <p class="text-white" set:html={t('about.p1')} />
       <p class="text-white" set:html={t('about.p2')} />
+      <p class="text-white" set:html={t('about.ai')} />
       <p class="text-white" set:html={t('about.p3')} />
-      <p class="text-white" set:html={t('about.p4')} />
+      <!-- <p class="text-white" set:html={t('about.p4')} /> -->
     </div>
 </article>
