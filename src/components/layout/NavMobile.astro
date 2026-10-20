@@ -8,6 +8,7 @@ import Briefcase from "../../icons/ui/Briefcase.astro"
 import CodeBranch from "../../icons/ui/CodeBranch.astro"
 import UserGraduate from "../../icons/ui/UserGraduate.astro"
 import Code from "../../icons/ui/Code.astro"
+import Email from "../../icons/social/Email.astro"
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -22,6 +23,7 @@ const icons = {
   'nav.projects': CodeBranch,
   'nav.education': UserGraduate,
   'nav.skills': Code,
+  'nav.contact': Email,
 };
 
 const items = navItems.map((item, i) => ({
@@ -33,10 +35,11 @@ const items = navItems.map((item, i) => ({
 ---
 
 <div class="fixed md:hidden z-50 w-full h-15 max-w-lg -translate-x-1/2 rounded-full bottom-3 left-1/2 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] border-gray-600">
-    <div class="grid h-full max-w-lg grid-cols-6 mx-auto">
+    <div class="grid h-full max-w-lg grid-cols-7 mx-auto">
         {items.map(({ hash, key, Icon, first, last }) => (
             <a
                 href={`${home}${hash}`}
+                data-nav={hash}
                 aria-label={t(key)}
                 class:list={[
                     "inline-flex flex-col items-center justify-center px-3 md:px-5 hover:bg-gray-800 group",
@@ -44,7 +47,8 @@ const items = navItems.map((item, i) => ({
                     last && "rounded-e-full",
                 ]}
             >
-                <Icon class="size-4 md:size-5 text-gray-400 group-hover:text-cyan-700" />
+                <Icon aria-hidden="true" class="size-5 text-gray-400 group-hover:text-cyan-300 group-aria-[current=true]:text-cyan-300" />
+                <span class="mt-1 size-1 rounded-full bg-transparent group-aria-[current=true]:bg-cyan-300" aria-hidden="true"></span>
                 <span class="sr-only">{t(key)}</span>
             </a>
         ))}
