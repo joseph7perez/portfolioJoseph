@@ -1,18 +1,76 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+interface Role {
+    cargo: string;
+    date: string;
+    current: boolean;
+    stack: string[];
+    bullets: string[];
+}
+
 interface Props {
     empresa: string;
     lugar: string;
-    date: string;
-    cargo: string;
-    descripcion: string;
+    project?: { title: string; href: string };
+    roles: Role[];
 }
 
-    const {empresa, lugar, date, cargo, descripcion} = Astro.props;
+const { empresa, lugar, project, roles } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// El punto de la línea de tiempo se resalta si algún cargo es el actual
+const isCurrent = roles.some((role) => role.current);
 ---
 
-<div class="absolute w-3 h-3 bg-gray-700 rounded-full mt-1.5 -start-1.5 border border-gray-900 "></div>
-<h3 class="text-lg font-semibold text-cyan-100">{empresa} - {lugar}</h3>
-<time class="mb-1 text-sm font-normal leading-none text-sky-200/80">{date}</time>
-<h3 class="text-2xl font-bold text-cyan-300/90 mt-2">{cargo}</h3>
-<p class="mb-4 text-base font-normal text-gray-200">{descripcion}</p>
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+<span
+    class:list={[
+        'absolute -start-[31px] top-2 size-3 rounded-full border',
+        isCurrent ? 'bg-cyan-300 border-cyan-100 ring-4 ring-cyan-300/20' : 'bg-gray-600 border-gray-900',
+    ]}
+    aria-hidden="true"
+></span>
+
+<h3 class="text-lg font-semibold text-white">
+    {empresa}
+    <span class="font-normal text-gray-400">· {lugar}</span>
+</h3>
+
+<div class="mt-4 space-y-7">
+    {roles.map((role) => (
+        <div>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h4 class="text-xl font-bold text-cyan-300/90">{role.cargo}</h4>
+                {role.current && (
+                    <span class="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-2.5 py-0.5 text-xs font-medium text-cyan-200">
+                        {t('experience.current')}
+                    </span>
+                )}
+            </div>
+            <time class="text-sm text-sky-200/80">{role.date}</time>
+
+            <ul class="mt-3 list-disc space-y-1.5 ps-5 text-gray-200 marker:text-cyan-300/60">
+                {role.bullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+
+            {role.stack.length > 0 && (
+                <ul class="mt-3 flex flex-wrap gap-2" aria-label="Stack">
+                    {role.stack.map((name) => (
+                        <li class="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-gray-300">{name}</li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    ))}
+</div>
+
+{project && (
+    <a
+        href={project.href}
+        class="mt-5 inline-flex items-center gap-x-1 text-sm font-medium text-cyan-300 underline underline-offset-4 hover:text-cyan-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+    >
+        {t('experience.viewProject')}: {project.title} →
+    </a>
+)}

@@ -1,34 +1,45 @@
 ---
 import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import ExperienceItem from "../ui/ExperienceItem.astro"
 import { getLangFromUrl } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 
 const entries = await getCollection('experience');
+const projects = (await getCollection('projects')).map(({ data }) => data);
 
 // Se aplana cada entrada al idioma actual para que <ExperienceItem />
-// siga recibiendo strings planos, sin cambios en ese componente.
+// reciba strings planos.
 const experience = entries
     .map(({ data }) => data)
     .sort((a, b) => a.order - b.order)
-    .map(({ empresa, lugar, date, cargo, descripcion }) => ({
-        empresa,
-        lugar,
-        date: date[lang],
-        cargo: cargo[lang],
-        descripcion: descripcion[lang],
-    }));
+    .map(({ empresa, lugar, projectSlug, roles }) => {
+        const project = projects.find((p) => p.slug === projectSlug);
+        return {
+            empresa,
+            lugar,
+            project: project && {
+                title: project.title,
+                href: getRelativeLocaleUrl(lang, `/projects/${project.slug}`),
+            },
+            roles: roles.map(({ cargo, date, current, stack, bullets }) => ({
+                cargo: cargo[lang],
+                date: date[lang],
+                current,
+                stack,
+                bullets: bullets[lang],
+            })),
+        };
+    });
 ---
 
-<ol class="relative border-s border-gray-700 ml-3">   
-    
+<ol class="relative border-s border-gray-700 ml-3">
     {
-        experience.map(experience => (
-            <li class="mb-10 ms-4">
-                <ExperienceItem {...experience}></ExperienceItem>
+        experience.map(item => (
+            <li class="relative mb-12 ms-6 last:mb-0">
+                <ExperienceItem {...item}></ExperienceItem>
             </li>
         ))
-    }             
-   
+    }
 </ol>

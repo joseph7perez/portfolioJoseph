@@ -8,6 +8,7 @@ const projects = defineCollection({
   schema: z.object({
     id: z.string(),
     title: z.string(),
+    featured: z.boolean().default(false),
     description: bilingual,
     link: z.string().default(''),
     github: z.array(z.object({ name: z.string(), url: z.string().url() })).default([]),
@@ -26,9 +27,14 @@ const experience = defineCollection({
     order: z.number(),
     empresa: z.string(),
     lugar: z.string(),
-    date: bilingual,
-    cargo: bilingual,
-    descripcion: bilingual,
+    projectSlug: z.string().optional(),
+    roles: z.array(z.object({
+      cargo: bilingual,
+      date: bilingual,
+      current: z.boolean().default(false),
+      stack: z.array(z.string()).default([]),
+      bullets: z.object({ es: z.array(z.string()), en: z.array(z.string()) }),
+    })),
   }),
 });
 
