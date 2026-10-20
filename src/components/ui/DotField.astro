@@ -1,0 +1,214 @@
+---
+// Campo de puntos interactivo: una onda recorre la rejilla, el cursor la ilumina y empuja, y cada clic lanza otra onda.
+// `host` es el id de la sección que escucha los clics y pausa el dibujo al salir de pantalla.
+// `intro` decide cuándo sale la primera onda: al cargar la página o cuando la sección entra en pantalla.
+interface Props {
+	host: string;
+	intro?: 'load' | 'visible';
+	class?: string;
+}
+
+const { host, intro = 'load', class: className = '' } = Astro.props;
+---
+
+<div class:list={['dot-field pointer-events-none absolute -z-10', className]} data-dot-field data-host={host} data-intro={intro} aria-hidden="true">
+	<canvas class="size-full"></canvas>
+</div>
+
+<style>
+	.dot-field {
+		-webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 35%, transparent 100%);
+		mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 35%, transparent 100%);
+	}
+</style>
+
+<script>
+	const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+	const GAP = 26; // separación de la rejilla
+	const REACH = 210; // radio de influencia del cursor
+	const PUSH = 18; // cuánto empuja el cursor
+	const SPEED = 720; // px/s de la onda
+	const BAND = 150; // grosor de la onda
+	const BASE = 'rgba(255,255,255,0.17)';
+
+	type Dot = { x: number; y: number; ox: number; oy: number; vx: number; vy: number };
+	type Ripple = { x: number; y: number; t0: number; power: number };
+
+	function init(field: HTMLElement) {
+		const canvas = field.querySelector('canvas');
+		const host = document.getElementById(field.dataset.host ?? '');
+		const ctx = canvas?.getContext('2d');
+		if (!canvas || !host || !ctx) return;
+
+		let dots: Dot[] = [];
+		let ripples: Ripple[] = [];
+		let w = 0;
+		let h = 0;
+		let dpr = 1;
+		let px = -9999;
+		let py = -9999;
+		let lastMove = 0;
+		let raf = 0;
+		let visible = true;
+		let introDone = false;
+
+		const paintStatic = () => {
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, w, h);
+			ctx.fillStyle = BASE;
+			for (const d of dots) ctx.fillRect(d.x - 0.75, d.y - 0.75, 1.5, 1.5);
+		};
+
+		const build = () => {
+			dpr = Math.min(devicePixelRatio || 1, 2);
+			w = field.clientWidth;
+			h = field.clientHeight;
+			if (!w || !h) return;
+			canvas.width = Math.round(w * dpr);
+			canvas.height = Math.round(h * dpr);
+			dots = [];
+			const cols = Math.ceil(w / GAP) + 1;
+			const rows = Math.ceil(h / GAP) + 1;
+			const x0 = (w - (cols - 1) * GAP) / 2;
+			const y0 = (h - (rows - 1) * GAP) / 2;
+			for (let r = 0; r < rows; r++) {
+				for (let c = 0; c < cols; c++) {
+					dots.push({ x: x0 + c * GAP, y: y0 + r * GAP, ox: 0, oy: 0, vx: 0, vy: 0 });
+				}
+			}
+			paintStatic();
+		};
+
+		const kick = () => {
+			if (!raf && visible && dots.length) raf = requestAnimationFrame(draw);
+		};
+
+		const ripple = (x: number, y: number, power = 1) => {
+			ripples.push({ x, y, t0: performance.now(), power });
+			if (ripples.length > 6) ripples.shift();
+			kick();
+		};
+
+		const draw = (now: number) => {
+			raf = 0;
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, w, h);
+
+			const pointerLive = now - lastMove < 1800;
+			let moving = false;
+
+			ripples = ripples.filter((rp) => ((now - rp.t0) / 1000) * SPEED < Math.hypot(w, h) + BAND);
+
+			for (const d of dots) {
+				let glow = 0;
+				let pushX = 0;
+				let pushY = 0;
+
+				if (pointerLive) {
+					const dx = d.x - px;
+					const dy = d.y - py;
+					const dist = Math.hypot(dx, dy);
+					if (dist < REACH) {
+						const k = 1 - dist / REACH;
+						glow = k * k;
+						if (dist > 0.5) {
+							pushX += (dx / dist) * glow * PUSH;
+							pushY += (dy / dist) * glow * PUSH;
+						}
+					}
+				}
+
+				for (const rp of ripples) {
+					const age = (now - rp.t0) / 1000;
+					const dx = d.x - rp.x;
+					const dy = d.y - rp.y;
+					const dist = Math.hypot(dx, dy);
+					const off = Math.abs(dist - age * SPEED) / BAND;
+					if (off < 1) {
+						const k = (1 - off) * (1 - off) * rp.power * Math.max(0, 1 - age / 3);
+						glow = Math.max(glow, k);
+						if (dist > 0.5) {
+							pushX += (dx / dist) * k * 9;
+							pushY += (dy / dist) * k * 9;
+						}
+					}
+				}
+
+				// muelle hacia la posición de reposo, con el empuje como objetivo
+				d.vx = (d.vx + (pushX - d.ox) * 0.14) * 0.74;
+				d.vy = (d.vy + (pushY - d.oy) * 0.14) * 0.74;
+				d.ox += d.vx;
+				d.oy += d.vy;
+				if (Math.abs(d.vx) > 0.01 || Math.abs(d.vy) > 0.01 || glow > 0.01) moving = true;
+
+				const x = d.x + d.ox;
+				const y = d.y + d.oy;
+				if (glow < 0.03) {
+					ctx.fillStyle = BASE;
+					ctx.fillRect(x - 0.75, y - 0.75, 1.5, 1.5);
+				} else {
+					ctx.fillStyle = `rgba(${Math.round(255 - 221 * glow)},${Math.round(255 - 44 * glow)},${Math.round(255 - 17 * glow)},${(0.17 + glow * 0.83).toFixed(3)})`;
+					ctx.beginPath();
+					ctx.arc(x, y, 0.85 + glow * 2.3, 0, 6.2832);
+					ctx.fill();
+				}
+			}
+
+			if (visible && (moving || ripples.length || pointerLive)) raf = requestAnimationFrame(draw);
+		};
+
+		const local = (e: PointerEvent) => {
+			const r = field.getBoundingClientRect();
+			return {
+				x: e.clientX - r.left,
+				y: e.clientY - r.top,
+				inside: e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom,
+			};
+		};
+
+		build();
+		new ResizeObserver(() => {
+			build();
+			if (!calm) kick();
+		}).observe(field);
+
+		if (calm) return;
+
+		if (field.dataset.intro === 'load') {
+			// onda inicial, sincronizada con la entrada del texto
+			introDone = true;
+			setTimeout(() => ripple(w / 2, h * 0.42, 1), 350);
+		}
+
+		if (fine) {
+			window.addEventListener('pointermove', (e) => {
+				const p = local(e);
+				if (!p.inside) return;
+				px = p.x;
+				py = p.y;
+				lastMove = performance.now();
+				kick();
+			}, { passive: true });
+		}
+
+		host.addEventListener('pointerdown', (e) => {
+			if ((e.target as HTMLElement).closest('a, button')) return;
+			const p = local(e);
+			ripple(p.x, p.y, 0.9);
+		});
+
+		new IntersectionObserver((entries) => {
+			const entry = entries[0];
+			visible = entry.isIntersecting;
+			if (visible && !introDone && entry.intersectionRatio >= 0.4) {
+				introDone = true;
+				ripple(w / 2, h / 2, 1);
+			}
+			if (visible) kick();
+		}, { threshold: [0, 0.4] }).observe(host);
+	}
+
+	document.querySelectorAll<HTMLElement>('[data-dot-field]').forEach(init);
+</script>

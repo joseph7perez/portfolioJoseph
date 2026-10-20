@@ -1,0 +1,102 @@
+---
+import Github from '../../icons/social/Github.astro';
+import Linkedin from '../../icons/social/Linkedin.astro';
+import Email from '../../icons/social/Email.astro';
+import File from '../../icons/ui/File.astro';
+import DotField from '../ui/DotField.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const email = 'josephperezsarmiento@hotmail.com';
+
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300';
+const secondary = `inline-flex items-center gap-x-2 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm text-white transition hover:bg-white/10 ${focus}`;
+---
+
+<div data-pause-offscreen class="contact-card relative isolate overflow-hidden rounded-3xl border border-white/10 bg-neutral-950/70 px-6 py-12 text-center md:px-12 md:py-16">
+  <!-- Mismo campo de puntos del hero; la onda sale cuando la tarjeta entra en pantalla -->
+  <DotField host="contact" intro="visible" class="inset-0" />
+
+  <p class="mx-auto mb-6 inline-flex items-center gap-x-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-1.5 text-xs text-cyan-100 md:text-sm">
+    <span class="relative flex size-2">
+      <span class="ping absolute inline-flex size-full rounded-full bg-cyan-300 opacity-75"></span>
+      <span class="relative inline-flex size-2 rounded-full bg-cyan-300"></span>
+    </span>
+    {t('hero.badge')}
+  </p>
+
+  <h2 class="mx-auto max-w-2xl text-3xl font-bold text-white text-balance md:text-5xl">{t('section.contact')}</h2>
+  <p class="mx-auto mt-4 max-w-xl text-gray-300 text-pretty leading-relaxed">{t('contact.text')}</p>
+
+  <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+    <a href={`mailto:${email}`} class={`shine relative inline-flex items-center gap-x-2 overflow-hidden rounded-full bg-cyan-400 px-6 py-3 font-semibold text-neutral-950 transition hover:bg-cyan-300 ${focus}`}>
+      <Email class="size-5" />
+      {t('contact.cta')}
+    </a>
+    <button type="button" id="copy-email" data-email={email} data-copy={t('contact.copy')} data-copied={t('contact.copied')} class={secondary}>
+      {t('contact.copy')}
+    </button>
+  </div>
+
+  <p class="mt-4 select-all text-sm text-gray-400">{email}</p>
+
+  <div class="mt-8 flex flex-wrap items-center justify-center gap-3 border-t border-white/10 pt-8">
+    <a href="https://www.linkedin.com/in/joseph-nicolas-p%C3%A9rez-sarmiento-250898244/" target="_blank" rel="noopener noreferrer" class={secondary}>
+      <Linkedin class="size-5" />
+      LinkedIn
+    </a>
+    <a href="https://github.com/joseph7perez" target="_blank" rel="noopener noreferrer" class={secondary}>
+      <Github class="size-5" />
+      GitHub
+    </a>
+    <a href={t('cv.href')} download={t('cv.filename')} class={secondary}>
+      <File class="size-5" />
+      {t('hero.cv')}
+    </a>
+  </div>
+</div>
+
+<script>
+  // Copia el correo al portapapeles y avisa en el propio botón
+  const button = document.getElementById('copy-email');
+  button?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.email ?? '');
+      button.textContent = button.dataset.copied ?? '';
+      setTimeout(() => { button.textContent = button.dataset.copy ?? ''; }, 2000);
+    } catch {
+      // Sin acceso al portapapeles el enlace "mailto" sigue disponible
+    }
+  });
+</script>
+
+<style>
+  .ping {
+    animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes ping {
+    75%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  /* Destello que recorre el botón principal */
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+    transform: translateX(-120%);
+    animation: shine-sweep 4s ease-in-out infinite;
+  }
+  @keyframes shine-sweep {
+    0%, 70% { transform: translateX(-120%); }
+    100%    { transform: translateX(120%); }
+  }
+
+  .shine:hover::after, .shine:focus-visible::after { animation-play-state: paused; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ping, .shine::after { animation: none; }
+  }
+</style>
