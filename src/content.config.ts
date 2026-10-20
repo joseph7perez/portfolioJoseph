@@ -9,6 +9,8 @@ const projects = defineCollection({
     id: z.string(),
     title: z.string(),
     featured: z.boolean().default(false),
+    // false = no aparece en "Más proyectos" del inicio; sigue en /projects y con su página de detalle
+    showOnHome: z.boolean().default(true),
     description: bilingual,
     link: z.string().default(''),
     github: z.array(z.object({ name: z.string(), url: z.string().url() })).default([]),

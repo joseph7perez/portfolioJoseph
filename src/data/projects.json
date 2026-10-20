@@ -101,7 +101,8 @@
       "/projects/tecnoFestival7.avif"
     ],
     "tags": ["Html", "Sass", "JavaScript"],
-    "slug": "technofestival"
+    "slug": "technofestival",
+    "showOnHome": false
   },
   {
     "id": "uptask",
@@ -153,7 +154,8 @@
       "/projects/DevWebcamp6.avif"
     ],
     "tags": ["Html", "PHP", "JavaScript", "Sass", "MySQL"],
-    "slug": "devwebcamp"
+    "slug": "devwebcamp",
+    "showOnHome": false
   },
   {
     "id": "bienesraices",
@@ -179,6 +181,7 @@
       "/projects/bienesRaices4.avif"
     ],
     "tags": ["Html", "PHP", "JavaScript", "Sass", "MySQL"],
-    "slug": "bienesraices"
+    "slug": "bienesraices",
+    "showOnHome": false
   }
 ]
