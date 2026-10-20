@@ -22,6 +22,13 @@ import Prisma from '../icons/technologies/Prisma.astro'
 import Git from '../icons/technologies/Git.astro'
 import Github from '../icons/social/Github.astro'
 import Azure from '../icons/technologies/Azure.astro'
+import Zustand from '../icons/technologies/Zustand.astro'
+import Supabase from '../icons/technologies/Supabase.astro'
+import MercadoPago from '../icons/technologies/MercadoPago.astro'
+import Cloudinary from '../icons/technologies/Cloudinary.astro'
+import Resend from '../icons/technologies/Resend.astro'
+import Vercel from '../icons/technologies/Vercel.astro'
+import Render from '../icons/technologies/Render.astro'
 
 export const tags = {
     Html:       { name: 'HTML',        icon: Html,       color: 'text-[#ff804a]' },
@@ -47,15 +54,25 @@ export const tags = {
     Git:        { name: 'Git',         icon: Git,        color: 'text-[#006a87]' },
     Github:     { name: 'Github',      icon: Github,     color: 'text-[#006a87]' },
     Azure:      { name: 'Azure',       icon: Azure,      color: 'text-[#006a87]' },
+    Zustand:    { name: 'Zustand',     icon: Zustand,    color: 'text-[#fff]'    },
+    Supabase:   { name: 'Supabase',    icon: Supabase,   color: 'text-[#3ecf8e]' },
+    MercadoPago:{ name: 'Mercado Pago', icon: MercadoPago, color: 'text-[#00b1ea]' },
+    Cloudinary: { name: 'Cloudinary',  icon: Cloudinary, color: 'text-[#3448c5]' },
+    Resend:     { name: 'Resend',      icon: Resend,     color: 'text-[#fff]'    },
+    Vercel:     { name: 'Vercel',      icon: Vercel,     color: 'text-[#fff]'    },
+    Render:     { name: 'Render',      icon: Render,     color: 'text-[#fff]'    },
 }
 
-// Orden en que se muestran en la sección de Skills.
-export const skillsOrder = [
-    'Html', 'Css', 'Sass', 'TAILWIND',
-    'JavaScript', 'TypeScript', 'NodeJS', 'NestJS',
-    'PHP', 'CSharp', 'Python', 'Java',
-    'NextJS', 'React', 'Astro', 'Express',
-    'MongoDB', 'MySQL', 'PostgreSQL', 'Prisma',
-    'Git', 'Github', 'Azure',
+// Sección de Skills: stack principal destacado y el resto agrupado como conocimientos.
+export const skillsMain = [
+    'TypeScript', 'JavaScript', 'React', 'NextJS',
+    'NodeJS', 'NestJS', 'TAILWIND', 'Prisma', 'PostgreSQL',
+]
+
+export const skillsKnowledge = [
+    { key: 'skills.group.frontend', items: ['Html', 'Css', 'Sass', 'Astro'] },
+    { key: 'skills.group.backend',  items: ['Express', 'PHP', 'CSharp', 'Python', 'Java'] },
+    { key: 'skills.group.data',     items: ['MongoDB', 'MySQL', 'Supabase'] },
+    { key: 'skills.group.tools',    items: ['Git', 'Github', 'Vercel', 'Azure'] },
 ]
 ---
