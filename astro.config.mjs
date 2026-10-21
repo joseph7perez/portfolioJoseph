@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://portfolio-joseph-lk4w.vercel.app',
+  site: 'https://www.josephperezs.dev',
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],
